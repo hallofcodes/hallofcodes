@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ProjectCard({ project }: { project: Repo }) {
   return (
     <article
-      className="group flex flex-col lg:flex-row items-start gap-4 bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-800 transition-all"
+      className="group flex flex-col lg:flex-row items-start gap-4 bg-gray-900 rounded-xl p-4 shadow-sm hover:shadow-lg border border-gray-800 transition-all"
       data-aos="fade-up"
     >
       <div className="w-full lg:w-44 h-28 relative flex-shrink-0 rounded-lg overflow-hidden bg-gray-200">
@@ -19,13 +19,13 @@ export default function ProjectCard({ project }: { project: Repo }) {
       </div>
       <div className="flex-1">
         <h3
-          className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1"
+          className="text-lg font-semibold text-white line-clamp-1"
           title={project.name}
         >
           {project.name}
         </h3>
         <p
-          className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3"
+          className="text-gray-300 mb-4 line-clamp-3"
           title={project.description || "No description provided."}
         >
           {project.description || "No description provided."}
@@ -40,7 +40,7 @@ export default function ProjectCard({ project }: { project: Repo }) {
             <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden />
             View on GitHub
           </a>
-          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex items-center gap-4 text-sm text-gray-400">
             <span className="inline-flex items-center gap-1">
               <FontAwesomeIcon icon={faStar} />
               {project.stars}

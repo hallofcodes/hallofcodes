@@ -60,7 +60,7 @@ function TableOfContents({ headings }: { headings: PostHeading[] }) {
   if (!headings.length) return null;
 
   return (
-    <aside className="hidden lg:block w-64 sticky top-24 self-start">
+    <aside className="hidden xl:block w-64 sticky top-24 self-start">
       <div className="text-sm font-semibold mb-3">On this page</div>
 
       <ul className="space-y-1 text-sm">
@@ -121,17 +121,17 @@ export default async function BlogPost({
     <div className="mt-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex justify-center">
         <div className="flex gap-10 w-full max-w-6xl">
-          <div className="prose prose-invert max-w-none p-3 md:p-8 flex-1">
+          <div className="prose prose-invert w-full max-w-none xl:max-w-prose p-4 md:p-8 flex-1">
             <Link
               href="/blog"
               className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-blue-500 transition-colors mb-4 no-underline"
             >
               <span>←</span> Back to blogs
             </Link>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-3xl font-bold text-white mb-4">
               {data.title}
             </h1>
-            <div className="text-gray-500 dark:text-gray-400 mb-6">
+            <div className="text-gray-400 mb-6">
               {data.excerpt}
             </div>
 
@@ -173,7 +173,7 @@ export default async function BlogPost({
                 ))}
             </ul>
           ) : (
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-400">
               No other posts available. Consider contributing your own insights
               and experiences to our blog!
             </p>

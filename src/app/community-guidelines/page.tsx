@@ -43,10 +43,10 @@ export const metadata: Metadata = {
 export default function CommunityGuidelines() {
   return (
     <div className="mt-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1 className="text-3xl font-bold text-white mb-4">
         Community Guidelines
       </h1>
-      <div className="text-gray-500 dark:text-gray-400 mb-12">
+      <div className="text-gray-400 mb-12">
         Welcome to Hall of Codes! We’re a collaborative, high-energy community
         built on respect, curiosity, and momentum. To keep the group valuable,
         safe, and fun for everyone, please follow these guidelines.
@@ -138,7 +138,7 @@ export default function CommunityGuidelines() {
         </div>
       </div>
 
-      <p className="mt-10 text-gray-600 dark:text-gray-400">
+      <p className="mt-10 text-gray-400">
         By participating in Hall of Codes, you agree to follow these rules. Help
         us keep this space respectful, useful, and fun.
       </p>
