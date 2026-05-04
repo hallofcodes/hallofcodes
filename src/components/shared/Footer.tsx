@@ -85,27 +85,24 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
               ) : (
                 <p className="text-gray-400 text-sm">No recent posts.</p>
               )}
-              {/*<h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                Notable Projects
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                Legal
               </h4>
               <ul className="space-y-2 text-gray-600 dark:text-gray-400">
                 <li>
-                  <Link
-                    href="https://github.com/hallofcodes/sprintsight"
-                    className="hover:underline"
-                  >
-                    Sprint Sight
+                  <Link href="/terms-of-service" className="hover:underline">
+                    Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="https://github.com/hallofcodes/devpulse"
-                    className="hover:underline"
-                  >
-                    DevPulse
+                  <Link href="/privacy-policy" className="hover:underline">
+                    Privacy Policy
                   </Link>
                 </li>
-              </ul>*/}
+              </ul>
             </div>
 
             <div>
