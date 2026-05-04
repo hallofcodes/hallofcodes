@@ -8,6 +8,7 @@ import Head from "next/head";
 import NextTopLoader from "nextjs-toploader";
 import ScrollTop from "@/components/ui/ScrollTop";
 import AOSWrapper from "@/components/shared/AOSWrapper";
+import { getRecentPosts } from "@/lib/posts";
 
 config.autoAddCss = false;
 
@@ -88,6 +89,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getRecentPosts(5);
+
   return (
     <html
       lang="en"
@@ -106,7 +109,7 @@ export default function RootLayout({
 
         <ScrollTop />
 
-        <Footer />
+        <Footer posts={posts} />
       </body>
     </html>
   );

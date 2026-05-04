@@ -9,11 +9,14 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import MemberCard from "@/components/ui/MemberCard";
 import timeline, { TimelineEntry } from "@/lib/timeline";
 import TimelineCard from "@/components/ui/TimelineCard";
+import { getRecentPosts, PostEntry } from "@/lib/posts";
+import BlogCard from "@/components/ui/BlogCard";
 
 export default async function Home() {
-  const [members, repositories] = await Promise.all([
+  const [members, repositories, posts] = await Promise.all([
     getMembers(),
     getRepositories(),
+    getRecentPosts(4),
   ]);
 
   const organization = {
@@ -197,6 +200,33 @@ export default async function Home() {
       </section>
 
       <section
+        className="min-h-screen flex items-center"
+        data-aos="fade-up"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, #101828 0%, rgba(31, 41, 55, 0.85) 55%, #1f2937 100%)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-20">
+          <div className="max-w-6xl mx-auto px-6 py-20">
+            <ScrambleText
+              as="h2"
+              text="Latest from Our Blog"
+              durationMs={2000}
+              className="text-3xl font-semibold text-gray-900 dark:text-white mb-8"
+              aria-label="Latest from Our Blog - Merging Programmers Beyond Conflicts"
+            />
+
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {posts.map((post: PostEntry, index: number) => (
+                <BlogCard key={index} post={post} />
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
         className="min-h-screen flex items-center bg-gray-50 dark:bg-gray-800"
         data-aos="fade-up"
       >
@@ -296,7 +326,87 @@ export default async function Home() {
       </section>
 
       <section
-        className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+        className="min-h-screen flex items-center"
+        data-aos="fade-up"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, #1f2937 0%, rgba(37,99,235,0.85) 55%, #4f46e5 100%)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-20">
+          <div className="flex flex-col lg:flex-row gap-10 items-center">
+            <div className="lg:w-2/5">
+              <p className="text-xs uppercase tracking-[0.3em] text-blue-200 font-semibold">
+                Founders Spotlight
+              </p>
+
+              <ScrambleText
+                as="h2"
+                text="Meet the Founders"
+                durationMs={2000}
+                className="text-3xl sm:text-4xl font-semibold text-white mt-3 mb-4"
+                aria-label="Meet the Founders - Merging Programmers Beyond Conflicts"
+              />
+
+              <p className="text-blue-100 leading-relaxed">
+                Hall of Codes is led by a small team committed to improving
+                collaboration across open-source projects. Below are the people
+                who started this journey — click through to learn more about
+                their backgrounds and what they care about.
+              </p>
+            </div>
+
+            <div className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <article className="group rounded-2xl border border-white/10 bg-white/95 p-6 shadow-sm hover:shadow-lg transition-all">
+                <img
+                  src="https://avatars.githubusercontent.com/mrepol742"
+                  alt="Founder of Hall of Codes"
+                  className="rounded-lg w-full h-56 object-cover mb-4 transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Melvin Jones Repol
+                    </h3>
+                    <p className="text-sm text-gray-500">Founder</p>
+                  </div>
+                </div>
+                <p className="mt-4 text-gray-700 leading-relaxed">
+                  Melvin is a custome software engineer with 10+ years
+                  experience. He founded Hall of Codes to break down barriers
+                  and create a collaborative environment where projects and
+                  people thrive.
+                </p>
+              </article>
+
+              <article className="group rounded-2xl border border-white/10 bg-white/95 p-6 shadow-sm hover:shadow-lg transition-all">
+                <img
+                  src="https://avatars.githubusercontent.com/samiunnafis"
+                  alt="Co-founder of Hall of Codes"
+                  className="rounded-lg w-full h-56 object-cover mb-4 transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Samiun Nafis
+                    </h3>
+                    <p className="text-sm text-gray-500">Co‑Founder</p>
+                  </div>
+                </div>
+                <p className="mt-4 text-gray-700 leading-relaxed">
+                  Samiun is a Full Stack Developer with a passion for
+                  open-source. He co-founded Hall of Codes to foster a community
+                  where developers can collaborate, learn, and build impactful
+                  projects together.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="min-h-screen flex items-center justify-center bg-[#4f46e5] text-white"
         data-aos="fade-up"
       >
         <div className="max-w-3xl text-center px-6 py-20">
