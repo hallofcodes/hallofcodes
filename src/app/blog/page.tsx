@@ -54,30 +54,52 @@ export default async function BlogPage({
   const paginatedPosts = posts.slice(start, end);
 
   return (
-    <div className="mt-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-white mb-4">
-        Blog
-      </h1>
-      <div className="text-gray-400 mb-12">
-        We share our insights, experiences, and knowledge on software
-        development, technology trends, and personal growth in the tech
-        industry. Explore our latest articles and join the conversation!
+    <section className="mx-auto mt-10 max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-10 grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+        <div>
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">
+            Hall of Codes Journal
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+          </div>
+          <h1 className="text-4xl font-bold text-white md:text-5xl">Blog</h1>
+          <p className="mt-3 max-w-2xl text-gray-300">
+            We share insights on software development, technology trends, and
+            growth in the tech industry—crafted for builders.
+          </p>
+        </div>
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {paginatedPosts.map((post: PostEntry, index: number) => (
           <BlogCard key={index} post={post} />
         ))}
       </ul>
 
-      <div className="flex gap-4 mt-6">
-        {safePage > 1 && (
-          <Link href={`/blog?page=${safePage - 1}`}>← Prev</Link>
+      <div className="mt-8 flex items-center justify-between border-t border-gray-800 pt-6 text-sm">
+        {safePage > 1 ? (
+          <Link
+            href={`/blog?page=${safePage - 1}`}
+            className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
+          >
+            ← Previous
+          </Link>
+        ) : (
+          <span />
         )}
-        {safePage < totalPages && (
-          <Link href={`/blog?page=${safePage + 1}`}>Next →</Link>
+        <span className="text-gray-500">
+          Page {safePage} of {totalPages}
+        </span>
+        {safePage < totalPages ? (
+          <Link
+            href={`/blog?page=${safePage + 1}`}
+            className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
+          >
+            Next →
+          </Link>
+        ) : (
+          <span />
         )}
       </div>
-    </div>
+    </section>
   );
 }

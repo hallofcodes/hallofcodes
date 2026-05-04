@@ -68,6 +68,7 @@ export default async function Home() {
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
 
         <div className="relative z-10 min-h-screen flex items-end justify-start">
           <div className="max-w-3xl px-6 pb-16 text-left">
@@ -145,9 +146,7 @@ export default async function Home() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-200">
-              Milestones
-            </h3>
+            <h3 className="text-lg font-medium text-gray-200">Milestones</h3>
             <ul className="space-y-4">
               {timeline.map((timeline: TimelineEntry, index: number) => (
                 <TimelineCard key={index} timeline={timeline} />
@@ -156,6 +155,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent pointer-events-none" />
 
       <section
         className="min-h-screen flex items-center bg-gray-800"
@@ -252,20 +253,14 @@ export default async function Home() {
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <div className="rounded-xl bg-gray-900 p-4 border border-gray-800">
-                  <div className="text-2xl font-semibold text-white">
-                    100+
-                  </div>
+                  <div className="text-2xl font-semibold text-white">100+</div>
                   <div className="text-sm text-gray-400">
                     Collaborations sparked
                   </div>
                 </div>
                 <div className="rounded-xl bg-gray-900 p-4 border border-gray-800">
-                  <div className="text-2xl font-semibold text-white">
-                    24/7
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    Ideas in motion
-                  </div>
+                  <div className="text-2xl font-semibold text-white">24/7</div>
+                  <div className="text-sm text-gray-400">Ideas in motion</div>
                 </div>
               </div>
             </div>
@@ -276,9 +271,7 @@ export default async function Home() {
                   <div className="h-10 w-10 rounded-full bg-blue-900/40 text-blue-300 flex items-center justify-center">
                     <FontAwesomeIcon icon={faPerson} />
                   </div>
-                  <h3 className="text-xl font-semibold text-white">
-                    Mission
-                  </h3>
+                  <h3 className="text-xl font-semibold text-white">Mission</h3>
                 </div>
                 <p className="mt-4 text-gray-300 leading-relaxed">
                   Build a frictionless playground where developers collaborate
@@ -372,7 +365,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <p className="mt-4 text-gray-700 leading-relaxed">
-                  Melvin is a custome software engineer with 10+ years
+                  Melvin is a custom software engineer with 10+ years
                   experience. He founded Hall of Codes to break down barriers
                   and create a collaborative environment where projects and
                   people thrive.
