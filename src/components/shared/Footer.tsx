@@ -1,7 +1,8 @@
+import { PostEntry } from "@/lib/posts";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer({ posts }: { posts: PostEntry[] }) {
   const startYear = 2019;
   const currentYear = new Date().getFullYear();
   const yearText =
@@ -64,6 +65,26 @@ export default function Footer() {
 
           <div className="md:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-6">
             <div>
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                Recent Posts
+              </h4>
+              {posts.length > 0 ? (
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                  {posts.map((post) => (
+                    <li key={post.slug}>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="block max-w-full truncate hover:text-orange-500 text-gray-400"
+                        title={post.title}
+                      >
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-400 text-sm">No recent posts.</p>
+              )}
               {/*<h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
                 Notable Projects
               </h4>

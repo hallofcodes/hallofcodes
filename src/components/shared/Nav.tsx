@@ -105,6 +105,13 @@ export default function Nav() {
           >
             Community
           </Link>
+          <Link
+            href="/blog"
+            className="block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200"
+            onClick={() => setOpen(false)}
+          >
+            Blog
+          </Link>
         </div>
       </div>
     </nav>
