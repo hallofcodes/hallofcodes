@@ -6,14 +6,14 @@ export default function BlogCard({ post }: { post: PostEntry }) {
     <li className="group" data-aos="fade-up">
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex flex-col items-start gap-4 bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-800 transition-all"
+        className="group flex flex-col items-start gap-4 bg-gray-900 rounded-xl p-4 shadow-sm hover:shadow-lg border border-gray-800 transition-all"
       >
         <div className="flex w-full justify-between gap-3 mb-3">
           <div className="flex items-center justify-between gap-3 mb-3">
             <span className="inline-flex capitalize rounded-full border px-2.5 py-1 text-xs">
               {post.topics?.[0] ?? "general"}
             </span>
-            <p className="text-xs md:text-sm">{post.date}</p>
+            <p className="hidden md:inline-block text-xs md:text-sm">{post.date}</p>
           </div>
 
           <span className="text-sm">@{post.author}</span>
@@ -27,7 +27,7 @@ export default function BlogCard({ post }: { post: PostEntry }) {
           {post.excerpt}
         </p>
 
-        <div className="mt-5 inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400">
+        <div className="mt-5 inline-flex items-center text-sm font-medium text-blue-400">
           Read article
           <span className="ml-1 transition-transform group-hover:translate-x-1">
             →

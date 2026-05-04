@@ -11,7 +11,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
       : `${startYear} - ${currentYear}`;
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+    <footer className="bg-gray-900 border-t border-gray-800" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-6 py-10">
         <div className="md:flex md:justify-between md:items-start gap-8">
           <div className="md:w-1/3">
@@ -24,16 +24,16 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 className="rounded-full"
               />
               <div>
-                <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                <div className="text-lg font-semibold text-white">
                   Hall of Codes
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-gray-400">
                   Merging Programmers Beyond Conflicts
                 </div>
               </div>
             </div>
 
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 text-sm text-gray-400">
               We revolutionize development by fostering cohesion among teams,
               transcending conflicts to drive collective innovation. Harnessing
               the synergy of diverse talents, we pave the way for seamless
@@ -46,7 +46,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 href="https://github.com/hallofcodes"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="text-gray-300 hover:text-white"
               >
                 <i className="fa-solid fa-github fa-lg" aria-hidden />
                 <span className="sr-only">GitHub</span>
@@ -55,7 +55,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 href="https://facebook.com/hallofcodes"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="text-gray-300 hover:text-white"
               >
                 <i className="fa-brands fa-facebook fa-lg" aria-hidden />
                 <span className="sr-only">Facebook</span>
@@ -63,18 +63,18 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             </div>
           </div>
 
-          <div className="md:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-6">
+          <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div>
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+              <h4 className="text-sm font-semibold text-white mb-3">
                 Recent Posts
               </h4>
               {posts.length > 0 ? (
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                <ul className="space-y-2 text-gray-400">
                   {posts.map((post) => (
                     <li key={post.slug}>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="block max-w-full truncate hover:text-orange-500 text-gray-400"
+                        className="hover:underline line-clamp-1"
                         title={post.title}
                       >
                         {post.title}
@@ -88,10 +88,8 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                Legal
-              </h4>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <h4 className="text-sm font-semibold text-white mb-3">Legal</h4>
+              <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="/terms-of-service" className="hover:underline">
                     Terms of Service
@@ -106,10 +104,10 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+              <h4 className="text-sm font-semibold text-white mb-3">
                 Community
               </h4>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link
                     href="/community-guidelines"
@@ -128,8 +126,8 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
           </div>
         </div>
 
-        <div className="border-t border-gray-100 dark:border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-gray-400">
             &copy; {yearText}{" "}
             <Link
               href="https://hallofcodes.vercel.app/"
@@ -140,7 +138,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             . All Rights Reserved.
           </div>
 
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="text-sm text-gray-400">
             Built with ♥ ·{" "}
             <Link
               href="https://github.com/hallofcodes"

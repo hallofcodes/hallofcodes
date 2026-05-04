@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function MemberCard({ member }: { member: Member }) {
   return (
     <article
-      className="group flex flex-col items-center text-center bg-white dark:bg-gray-900 rounded-lg p-6 shadow"
+      className="group flex flex-col items-center text-center bg-gray-900 rounded-lg p-6 shadow"
       data-aos="fade-up"
     >
       <Image
@@ -14,7 +14,7 @@ export default function MemberCard({ member }: { member: Member }) {
         height={96}
         className="group-hover:scale-110 transition-transform duration-300 rounded-full mb-4 object-cover"
       />
-      <div className="font-medium text-gray-900 dark:text-white">
+      <div className="font-medium text-white">
         {member.login}
       </div>
     </article>

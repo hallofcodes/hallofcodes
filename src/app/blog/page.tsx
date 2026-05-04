@@ -55,10 +55,10 @@ export default async function BlogPage({
 
   return (
     <div className="mt-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1 className="text-3xl font-bold text-white mb-4">
         Blog
       </h1>
-      <div className="text-gray-500 dark:text-gray-400 mb-12">
+      <div className="text-gray-400 mb-12">
         We share our insights, experiences, and knowledge on software
         development, technology trends, and personal growth in the tech
         industry. Explore our latest articles and join the conversation!

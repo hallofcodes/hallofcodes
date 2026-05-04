@@ -47,10 +47,10 @@ export default async function Projects() {
 
   return (
     <div className="mt-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1 className="text-3xl font-bold text-white mb-4">
         Our Projects
       </h1>
-      <div className="text-gray-500 dark:text-gray-400 mb-12">
+      <div className="text-gray-400 mb-12">
         We are proud to showcase our projects that demonstrate the creativity
         and collaboration of our members. Here are some of the amazing projects
         that we have worked on together:

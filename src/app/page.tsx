@@ -81,7 +81,7 @@ export default async function Home() {
             <p className="text-lg sm:text-2xl text-gray-200 mb-4">
               Merging Programmers Beyond Conflicts
             </p>
-            <p className="text-sm sm:text-base text-gray-300 max-w-2xl mb-6">
+            <p className="text-sm sm:text-base text-gray-300 max-w-2xl mb-6 line-clamp-2 md:line-clamp-3">
               We revolutionize development by fostering cohesion among teams,
               transcending conflicts to drive collective innovation. Harnessing
               the synergy of diverse talents, we pave the way for seamless
@@ -92,13 +92,13 @@ export default async function Home() {
             <div className="flex items-center gap-4">
               <Link
                 href="/members"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-5 rounded-md font-semibold"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md"
               >
                 View Members
               </Link>
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 border border-white/30 text-white/90 py-3 px-5 rounded-md hover:bg-white/10"
+                className="inline-flex items-center gap-2 border border-white/30 text-sm font-medium py-2 px-4 rounded-md hover:bg-white/5"
               >
                 View Projects
               </Link>
@@ -108,7 +108,7 @@ export default async function Home() {
       </section>
 
       <section
-        className="min-h-screen flex items-center bg-white dark:bg-gray-900"
+        className="min-h-screen flex items-center bg-gray-900"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -117,18 +117,18 @@ export default async function Home() {
               as="h2"
               text="About Hall of Codes"
               durationMs={2000}
-              className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white"
+              className="text-3xl font-semibold mb-4 text-white"
               aria-label="About Hall of Codes - Merging Programmers Beyond Conflicts"
             />
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            <p className="text-gray-300 leading-relaxed mb-4">
               Hall of Codes is an inclusive community of developers and
               contributors who believe collaboration outperforms conflict. We
               bring together diverse skillsets and perspectives to solve real
               problems, mentor newcomers, and ship sustainable open-source
               projects.
             </p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-400">
               Our mission: improve developer collaboration, reduce friction, and
               create an ecosystem where ideas can grow into impactful projects.
             </p>
@@ -145,7 +145,7 @@ export default async function Home() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+            <h3 className="text-lg font-medium text-gray-200">
               Milestones
             </h3>
             <ul className="space-y-4">
@@ -158,7 +158,7 @@ export default async function Home() {
       </section>
 
       <section
-        className="min-h-screen flex items-center bg-gray-50 dark:bg-gray-800"
+        className="min-h-screen flex items-center bg-gray-800"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto px-6 py-20">
@@ -166,7 +166,7 @@ export default async function Home() {
             as="h2"
             text="Some of Our Members"
             durationMs={2000}
-            className="text-3xl font-semibold text-gray-900 dark:text-white mb-8"
+            className="text-3xl font-semibold text-white mb-8"
             aria-label="Some of Our Members - Merging Programmers Beyond Conflicts"
           />
 
@@ -179,7 +179,7 @@ export default async function Home() {
       </section>
 
       <section
-        className="min-h-screen flex items-center bg-white dark:bg-gray-900"
+        className="min-h-screen flex items-center bg-gray-900"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto px-6 py-20">
@@ -187,7 +187,7 @@ export default async function Home() {
             as="h2"
             text="Some of Our Projects"
             durationMs={2000}
-            className="text-3xl font-semibold text-gray-900 dark:text-white mb-8"
+            className="text-3xl font-semibold text-white mb-8"
             aria-label="Some of Our Projects - Merging Programmers Beyond Conflicts"
           />
 
@@ -213,7 +213,7 @@ export default async function Home() {
               as="h2"
               text="Latest from Our Blog"
               durationMs={2000}
-              className="text-3xl font-semibold text-gray-900 dark:text-white mb-8"
+              className="text-3xl font-semibold text-white mb-8"
               aria-label="Latest from Our Blog - Merging Programmers Beyond Conflicts"
             />
 
@@ -227,13 +227,13 @@ export default async function Home() {
       </section>
 
       <section
-        className="min-h-screen flex items-center bg-gray-50 dark:bg-gray-800"
+        className="min-h-screen flex items-center bg-gray-800"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="flex flex-col lg:flex-row gap-10 items-center">
             <div className="lg:w-2/5">
-              <p className="text-xs uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400 font-semibold">
+              <p className="text-xs uppercase tracking-[0.3em] text-blue-400 font-semibold">
                 Our North Star
               </p>
 
@@ -241,29 +241,29 @@ export default async function Home() {
                 as="h2"
                 text="Mission & Vision"
                 durationMs={2000}
-                className="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mt-3 mb-4"
+                className="text-3xl sm:text-4xl font-semibold text-white mt-3 mb-4"
                 aria-label="Mission & Vision - Merging Programmers Beyond Conflicts"
               />
 
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 We turn late-night ideas into morning launches. Hall of Codes is
                 where builders meet, momentum stacks, and the only drama is how
                 fast we ship.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="rounded-xl bg-white dark:bg-gray-900 p-4 border border-gray-100 dark:border-gray-800">
-                  <div className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <div className="rounded-xl bg-gray-900 p-4 border border-gray-800">
+                  <div className="text-2xl font-semibold text-white">
                     100+
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Collaborations sparked
                   </div>
                 </div>
-                <div className="rounded-xl bg-white dark:bg-gray-900 p-4 border border-gray-100 dark:border-gray-800">
-                  <div className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <div className="rounded-xl bg-gray-900 p-4 border border-gray-800">
+                  <div className="text-2xl font-semibold text-white">
                     24/7
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Ideas in motion
                   </div>
                 </div>
@@ -271,21 +271,21 @@ export default async function Home() {
             </div>
 
             <div className="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              <article className="group rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm hover:shadow-lg transition-all">
+              <article className="group rounded-2xl border border-gray-800 bg-gray-900 p-6 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-blue-900/40 text-blue-300 flex items-center justify-center">
                     <FontAwesomeIcon icon={faPerson} />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-white">
                     Mission
                   </h3>
                 </div>
-                <p className="mt-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="mt-4 text-gray-300 leading-relaxed">
                   Build a frictionless playground where developers collaborate
                   instead of collide. We champion clarity, empathy, and shipping
                   together—because great code deserves a great community.
                 </p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                <ul className="mt-4 space-y-2 text-sm text-gray-400">
                   <li className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-blue-500" />
                     Reduce conflict, amplify output
@@ -297,7 +297,7 @@ export default async function Home() {
                 </ul>
               </article>
 
-              <article className="group rounded-2xl border border-gray-200 dark:border-gray-800 bg-gradient-to-br from-blue-600 to-indigo-600 p-6 shadow-sm hover:shadow-lg transition-all text-white">
+              <article className="group rounded-2xl border border-gray-800 bg-gradient-to-br from-blue-600 to-indigo-600 p-6 shadow-sm hover:shadow-lg transition-all text-white">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-white/20 text-white flex items-center justify-center">
                     <FontAwesomeIcon icon={faStar} />
