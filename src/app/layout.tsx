@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
       "We revolutionize development by fostering cohesion among teams, transcending conflicts to drive collective innovation. Harnessing the synergy of diverse talents, we pave the way for seamless collaboration, ensuring projects thrive in an environment of unity and progress.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -95,6 +95,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${sourceCodePro.variable} ${mavenPro.variable}`}
+      data-scroll-behavior="smooth"
     >
       <Head>
         <meta name="hostname" content="hallofcodes.vercel.app" />

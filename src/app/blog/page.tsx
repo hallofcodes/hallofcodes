@@ -54,52 +54,87 @@ export default async function BlogPage({
   const paginatedPosts = posts.slice(start, end);
 
   return (
-    <section className="mx-auto mt-10 max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mb-10 grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-        <div>
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">
-            Hall of Codes Journal
+    <main className="bg-gray-950 text-white mt-10">
+      <section className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />
+
+        <div className="relative mx-auto flex min-h-screen max-w-screen-xl flex-col items-start justify-center gap-8 px-6 py-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-blue-300">
+            Hall of Codes Blog
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+            Fresh insights
           </div>
-          <h1 className="text-4xl font-bold text-white md:text-5xl">Blog</h1>
-          <p className="mt-3 max-w-2xl text-gray-300">
+          <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+            Stories from the build.
+            <span className="block text-blue-400">Read, learn, and grow.</span>
+          </h1>
+          <p className="max-w-2xl text-base text-gray-300 md:text-lg">
             We share insights on software development, technology trends, and
             growth in the tech industry—crafted for builders.
           </p>
+          <div className="flex flex-wrap gap-4">
+            <button className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400">
+              Join the Community
+            </button>
+            <button className="rounded-xl border border-gray-700 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-gray-500 hover:text-white">
+              Explore Events
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {paginatedPosts.map((post: PostEntry, index: number) => (
-          <BlogCard key={index} post={post} />
-        ))}
-      </ul>
+      <section className="min-h-screen border-t border-gray-900">
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                Blogs
+              </div>
+              <h2 className="text-3xl font-bold md:text-4xl">
+                Real stories. Real insights.
+              </h2>
+              <p className="max-w-2xl text-gray-300">
+                Dive into our members' experiences, lessons learned, and
+                thoughts on software development, technology, and personal
+                growth.
+              </p>
+            </div>
+          </div>
 
-      <div className="mt-8 flex items-center justify-between border-t border-gray-800 pt-6 text-sm">
-        {safePage > 1 ? (
-          <Link
-            href={`/blog?page=${safePage - 1}`}
-            className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
-          >
-            ← Previous
-          </Link>
-        ) : (
-          <span />
-        )}
-        <span className="text-gray-500">
-          Page {safePage} of {totalPages}
-        </span>
-        {safePage < totalPages ? (
-          <Link
-            href={`/blog?page=${safePage + 1}`}
-            className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
-          >
-            Next →
-          </Link>
-        ) : (
-          <span />
-        )}
-      </div>
-    </section>
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {paginatedPosts.map((post: PostEntry, index: number) => (
+              <BlogCard key={index} post={post} />
+            ))}
+          </ul>
+
+          <div className="mt-8 flex items-center justify-between border-t border-gray-800 pt-6 text-sm">
+            {safePage > 1 ? (
+              <Link
+                href={`/blog?page=${safePage - 1}`}
+                className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
+              >
+                ← Previous
+              </Link>
+            ) : (
+              <span />
+            )}
+            <span className="text-gray-500">
+              Page {safePage} of {totalPages}
+            </span>
+            {safePage < totalPages ? (
+              <Link
+                href={`/blog?page=${safePage + 1}`}
+                className="rounded-lg border border-gray-700 px-4 py-2 text-gray-200 transition hover:border-gray-500 hover:text-white"
+              >
+                Next →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

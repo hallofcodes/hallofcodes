@@ -47,6 +47,12 @@ const timeline: TimelineEntry[] = [
     description:
       "We dressed the site in enterprise-grade polish with enough personality to keep it unmistakably ours. The result: modern, sleek, and ready to scale with the community’s momentum.",
   },
+  {
+    date: "May 2026",
+    heading: "Now in LinkedIn Organization",
+    description:
+      "We expanded our presence to LinkedIn, because why not? The professional world needed a dose of our unique blend of code and comedy, and we were more than happy to deliver.",
+  },
 ];
 
 export default timeline;

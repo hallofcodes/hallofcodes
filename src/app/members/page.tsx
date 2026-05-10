@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Meet the talented individuals who make up our community.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -45,7 +45,7 @@ export default async function Members() {
   const memberCount = members.length;
 
   return (
-    <main className="bg-gray-950 text-white">
+    <main className="bg-gray-950 text-white mt-10">
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />

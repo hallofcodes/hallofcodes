@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Please read and follow our community guidelines to ensure a positive and respectful environment for all members.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/cover.jpg",
+        url: "https://hallofcodes.vercel.app/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
