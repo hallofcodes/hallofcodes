@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Community() {
   return (
     <main className="bg-gray-950 text-white mt-10">
@@ -21,9 +23,12 @@ export default function Community() {
             projects together.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400">
+            <Link
+              href="#connect"
+              className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+            >
               Join the Community
-            </button>
+            </Link>
             <button className="rounded-xl border border-gray-700 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-gray-500 hover:text-white">
               Explore Events
             </button>
@@ -50,7 +55,7 @@ export default function Community() {
         </div>
       </section>
 
-      <section className="min-h-screen border-t border-gray-900">
+      <section className="min-h-screen border-t border-gray-900" id="connect">
         <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16 md:flex-row md:items-center">
           <div className="flex-1 space-y-4">
             <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
@@ -68,20 +73,30 @@ export default function Community() {
             <div className="grid gap-4">
               {[
                 {
-                  title: "WhatsApp",
-                  desc: "Fast feedback loops and daily check-ins.",
+                  title: "Join on GitHub",
+                  desc: "Central hub for code, discussions, and project management.",
+                  link: "https://github.com/hallofcodes",
                 },
                 {
-                  title: "Facebook Messenger",
-                  desc: "Community updates and event reminders.",
+                  title: "Join on Codeberge",
+                  desc: "Alternative open-source platform for code hosting and collaboration.",
+                  link: "https://codeberg.org/hall-of-codes",
                 },
                 {
-                  title: "GitHub Discussions",
-                  desc: "Deep technical threads and project planning.",
+                  title: "Join on WhatsApp",
+                  desc: "Real-time chat for quick questions, project updates, and casual conversation.",
+                  link: "https://chat.whatsapp.com/ICRRqZivQ9PB1kmmZMKNnq?s=cl&p=a&mlu=3",
                 },
-              ].map((item) => (
-                <div
-                  key={item.title}
+                {
+                  title: "Join on Messenger",
+                  desc: "Instant messaging for announcements, discussions, and community bonding.",
+                  link: "https://m.me/j/AbajwXM3ZUXO7emx/?send_source=gc%3Acopy_invite_link_c",
+                },
+              ].map((item, index) => (
+                <Link
+                  href={item.link}
+                  key={index}
+                  target="_blank"
                   className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 transition hover:border-blue-500/40"
                 >
                   <div className="flex items-center justify-between">
@@ -91,7 +106,7 @@ export default function Community() {
                     <span className="text-xs text-blue-400">Open</span>
                   </div>
                   <p className="mt-2 text-sm text-gray-400">{item.desc}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

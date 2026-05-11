@@ -1,4 +1,11 @@
 import { PostEntry } from "@/lib/posts";
+import {
+  faFacebook,
+  faGithub,
+  faLinkedin,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,6 +47,44 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
               collaboration, ensuring projects thrive in an environment of unity
               and progress.
             </p>
+
+            <div className="mt-4 flex items-center gap-4">
+              <Link
+                href="https://facebook.com/hallofcodes"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FontAwesomeIcon icon={faFacebook} size="lg" aria-hidden />
+              </Link>
+
+              <Link
+                href="https://youtube.com/@hallofcodes"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FontAwesomeIcon icon={faYoutube} size="lg" aria-hidden />
+              </Link>
+
+              <Link
+                href="https://linkedin.com/company/hallofcodes"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FontAwesomeIcon icon={faLinkedin} size="lg" aria-hidden />
+              </Link>
+
+              <Link
+                href="https://github.com/hallofcodes"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FontAwesomeIcon icon={faGithub} size="lg" aria-hidden />
+              </Link>
+            </div>
 
             <div className="mt-4 flex items-center gap-4">
               <a
