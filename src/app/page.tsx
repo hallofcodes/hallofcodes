@@ -108,36 +108,33 @@ export default async function Home() {
         </div>
       </section>
 
-      <section
-        className="min-h-screen flex items-center bg-gray-900"
-        data-aos="fade-up"
-      >
-        <div className="max-w-6xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="flex flex-col justify-center">
+      <section className="min-h-screen bg-gray-900">
+        <div className="mx-auto flex flex-col lg:flex-row min-h-screen max-w-6xl  items-center gap-10 px-6 py-20">
+          <div className="w-full lg:w-[55%]">
             <ScrambleText
               as="h2"
               text="About Hall of Codes"
               durationMs={2000}
-              className="text-3xl font-semibold mb-4 text-white"
+              className="text-3xl font-semibold text-white md:text-4xl"
               aria-label="About Hall of Codes - Merging Programmers Beyond Conflicts"
             />
 
-            <p className="text-gray-300 leading-relaxed mb-4">
+            <p className="mt-4 text-gray-300 leading-relaxed">
               Hall of Codes is an inclusive community of developers and
               contributors who believe collaboration outperforms conflict. We
               bring together diverse skillsets and perspectives to solve real
               problems, mentor newcomers, and ship sustainable open-source
               projects.
             </p>
-            <p className="text-gray-400">
+            <p className="mt-3 text-gray-400">
               Our mission: improve developer collaboration, reduce friction, and
               create an ecosystem where ideas can grow into impactful projects.
             </p>
 
-            <div>
+            <div className="mt-6">
               <Link
                 href="https://github.com/hallofcodes/join"
-                className="inline-flex items-center gap-2 mt-6 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700"
               >
                 <FontAwesomeIcon icon={faGithub} />
                 Join Github Organization
@@ -145,23 +142,43 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-200">Milestones</h3>
-            <ul className="space-y-4">
-              {timeline.map((timeline: TimelineEntry, index: number) => (
-                <TimelineCard key={index} timeline={timeline} />
-              ))}
-            </ul>
+          <div className="w-full lg:w-[45%]">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-lg font-medium text-gray-200">Milestones</h3>
+              <span className="text-xs uppercase tracking-widest text-blue-400">
+                Timeline
+              </span>
+            </div>
+
+            <div
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskSize: "100% 100%",
+              }}
+            >
+              <ul className="flex gap-4">
+                {timeline.map((timeline: TimelineEntry, index: number) => (
+                  <li
+                    key={index}
+                    className="min-w-[240px] snap-start rounded-xl bg-gray-800/60 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg md:min-w-[280px]"
+                  >
+                    <TimelineCard timeline={timeline} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <p className="text-xs text-gray-500">Swipe/scroll to explore →</p>
           </div>
         </div>
       </section>
 
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent pointer-events-none" />
 
-      <section
-        className="min-h-screen flex items-center bg-gray-800"
-        data-aos="fade-up"
-      >
+      <section className="min-h-screen flex items-center bg-gray-800">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <ScrambleText
             as="h2"
@@ -179,10 +196,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section
-        className="min-h-screen flex items-center bg-gray-900"
-        data-aos="fade-up"
-      >
+      <section className="min-h-screen flex items-center bg-gray-900">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <ScrambleText
             as="h2"
@@ -202,7 +216,6 @@ export default async function Home() {
 
       <section
         className="min-h-screen flex items-center"
-        data-aos="fade-up"
         style={{
           backgroundImage:
             "linear-gradient(180deg, #101828 0%, rgba(31, 41, 55, 0.85) 55%, #1f2937 100%)",
@@ -227,10 +240,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section
-        className="min-h-screen flex items-center bg-gray-800"
-        data-aos="fade-up"
-      >
+      <section className="min-h-screen flex items-center bg-gray-800">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="flex flex-col lg:flex-row gap-10 items-center">
             <div className="lg:w-2/5">
@@ -320,7 +330,6 @@ export default async function Home() {
 
       <section
         className="min-h-screen flex items-center"
-        data-aos="fade-up"
         style={{
           backgroundImage:
             "linear-gradient(180deg, #1f2937 0%, rgba(37,99,235,0.85) 55%, #4f46e5 100%)",
@@ -398,10 +407,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section
-        className="min-h-screen flex items-center justify-center bg-[#4f46e5] text-white"
-        data-aos="fade-up"
-      >
+      <section className="min-h-screen flex items-center justify-center bg-[#4f46e5] text-white">
         <div className="max-w-3xl text-center px-6 py-20">
           <ScrambleText
             as="h2"

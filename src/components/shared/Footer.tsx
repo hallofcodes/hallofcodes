@@ -18,7 +18,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
       : `${startYear} - ${currentYear}`;
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800" data-aos="fade-up">
+    <footer className="bg-gray-900 border-t border-gray-800">
       <div className="max-w-screen-xl mx-auto px-6 py-10">
         <div className="md:flex md:justify-between md:items-start gap-8">
           <div className="md:w-1/3">
