@@ -7,6 +7,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getAllPosts();
 
   return posts.map((post) => ({
-    url: `https://hallofcodes.vercel.app/blog/${post.slug}`,
+    url: `https://www.hallofcodes.org/blog/${post.slug}`,
   }));
 }

@@ -175,7 +175,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
           <div className="text-sm text-gray-400">
             &copy; {yearText}{" "}
             <Link
-              href="https://hallofcodes.vercel.app/"
+              href="https://www.hallofcodes.org/"
               className="hover:underline"
             >
               Hall of Codes

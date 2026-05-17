@@ -26,7 +26,7 @@ export async function generateMetadata({
       locale: "en_US",
     },
     alternates: {
-      canonical: `https://hallofcodes.vercel.app/blog?page=${page}`,
+      canonical: `https://www.hallofcodes.org/blog?page=${page}`,
     },
     twitter: {
       card: "summary_large_image",

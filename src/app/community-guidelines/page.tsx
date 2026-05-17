@@ -5,17 +5,17 @@ export const metadata: Metadata = {
   description:
     "Please read and follow our community guidelines to ensure a positive and respectful environment for all members.",
   alternates: {
-    canonical: "https://hallofcodes.vercel.app/community-guidelines",
+    canonical: "https://www.hallofcodes.org/community-guidelines",
   },
   openGraph: {
     title: "Community Guidelines - Hall of Codes",
     description:
       "Please read and follow our community guidelines to ensure a positive and respectful environment for all members.",
-    url: "https://hallofcodes.vercel.app/community-guidelines",
+    url: "https://www.hallofcodes.org/community-guidelines",
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Please read and follow our community guidelines to ensure a positive and respectful environment for all members.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",

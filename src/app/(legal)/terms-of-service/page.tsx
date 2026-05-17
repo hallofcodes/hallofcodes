@@ -4,12 +4,12 @@ export const metadata: Metadata = {
   title: "Terms of Service - Hall of Codes",
   description:
     "Terms of Service for Hall of Codes community site. Rules for acceptable use, contributions, and limitations of liability.",
-  alternates: { canonical: "https://hallofcodes.vercel.app/terms-of-service" },
+  alternates: { canonical: "https://www.hallofcodes.org/terms-of-service" },
   openGraph: {
     title: "Terms of Service - Hall of Codes",
     description:
       "Terms of Service for Hall of Codes community site. Rules for acceptable use, contributions, and limitations of liability.",
-    url: "https://hallofcodes.vercel.app/terms-of-service",
+    url: "https://www.hallofcodes.org/terms-of-service",
     siteName: "Hall of Codes",
     locale: "en_US",
     type: "website",
