@@ -23,7 +23,7 @@ jobs:
       - name: Submit URLs
         run: |
           npx indexnow-notifier \
-            --site https://hallofcodes.vercel.app \
-            --host hallofcodes.vercel.app \
+            --site https://www.hallofcodes.org \
+            --host www.hallofcodes.org \
             --key ${{ secrets.INDEXNOW_KEY }} \
             --framework nextjs-app

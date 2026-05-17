@@ -7,16 +7,16 @@ export const metadata: Metadata = {
   title: "Our Members - Hall of Codes",
   description: "Meet the talented individuals who make up our community.",
   alternates: {
-    canonical: "https://hallofcodes.vercel.app/members",
+    canonical: "https://www.hallofcodes.org/members",
   },
   openGraph: {
     title: "Our Members - Hall of Codes",
     description: "Meet the talented individuals who make up our community.",
-    url: "https://hallofcodes.vercel.app/members",
+    url: "https://www.hallofcodes.org/members",
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Meet the talented individuals who make up our community.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",

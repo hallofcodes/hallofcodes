@@ -4,12 +4,12 @@ export const metadata: Metadata = {
   title: "Privacy Policy - Hall of Codes",
   description:
     "Privacy Policy for Hall of Codes. Explains what data (if any) we collect, how we use it, and third-party services involved.",
-  alternates: { canonical: "https://hallofcodes.vercel.app/privacy-policy" },
+  alternates: { canonical: "https://www.hallofcodes.org/privacy-policy" },
   openGraph: {
     title: "Privacy Policy - Hall of Codes",
     description:
       "Privacy Policy for Hall of Codes. Explains what data (if any) we collect, how we use it, and third-party services involved.",
-    url: "https://hallofcodes.vercel.app/privacy-policy",
+    url: "https://www.hallofcodes.org/privacy-policy",
     siteName: "Hall of Codes",
     locale: "en_US",
     type: "website",

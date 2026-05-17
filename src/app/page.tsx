@@ -23,8 +23,8 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Hall of Codes",
-    url: "https://hallofcodes.vercel.app",
-    logo: "https://hallofcodes.vercel.app/hoc-icon.png",
+    url: "https://www.hallofcodes.org",
+    logo: "https://www.hallofcodes.org/hoc-icon.png",
     sameAs: [
       "https://www.facebook.com/hallofcodes",
       "https://github.com/hallofcodes",
@@ -35,7 +35,7 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Hall of Codes",
-    url: "https://hallofcodes.vercel.app",
+    url: "https://www.hallofcodes.org",
     inLanguage: "en",
   };
 

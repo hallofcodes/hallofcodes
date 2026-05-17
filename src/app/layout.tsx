@@ -27,7 +27,7 @@ const mavenPro = Maven_Pro({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hallofcodes.vercel.app"),
+  metadataBase: new URL("https://www.hallofcodes.org"),
   title: "Hall of Codes - Merging Programmers Beyond Conflicts",
   description:
     "We revolutionize development by fostering cohesion among teams, transcending conflicts to drive collective innovation. Harnessing the synergy of diverse talents, we pave the way for seamless collaboration, ensuring projects thrive in an environment of unity and progress.",
@@ -44,17 +44,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Melvin Jones Repol", url: "https://mrepol742.github.io" }],
   creator: "Melvin Jones Repol",
   alternates: {
-    canonical: "https://hallofcodes.vercel.app/",
+    canonical: "https://www.hallofcodes.org/",
   },
   openGraph: {
     title: "Hall of Codes - Merging Programmers Beyond Conflicts",
     description:
       "We revolutionize development by fostering cohesion among teams, transcending conflicts to drive collective innovation. Harnessing the synergy of diverse talents, we pave the way for seamless collaboration, ensuring projects thrive in an environment of unity and progress.",
-    url: "https://hallofcodes.vercel.app/",
+    url: "https://www.hallofcodes.org/",
     siteName: "Hall of Codes",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
       "We revolutionize development by fostering cohesion among teams, transcending conflicts to drive collective innovation. Harnessing the synergy of diverse talents, we pave the way for seamless collaboration, ensuring projects thrive in an environment of unity and progress.",
     images: [
       {
-        url: "https://hallofcodes.vercel.app/hoc-cover.png",
+        url: "https://www.hallofcodes.org/hoc-cover.png",
         width: 1200,
         height: 630,
         alt: "Hall of Codes Logo",
@@ -98,7 +98,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <Head>
-        <meta name="hostname" content="hallofcodes.vercel.app" />
+        <meta name="hostname" content="www.hallofcodes.org" />
       </Head>
       <body className="antialiased">
         <AOSWrapper />

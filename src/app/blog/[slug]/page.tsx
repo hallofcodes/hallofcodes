@@ -40,7 +40,7 @@ export async function generateMetadata({
       locale: "en_US",
     },
     alternates: {
-      canonical: `https://hallofcodes.vercel.app/blog/${slug}`,
+      canonical: `https://www.hallofcodes.org/blog/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
