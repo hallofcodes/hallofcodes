@@ -18,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://www.hallofcodes.org/portfolio",
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: "https://www.hallofcodes.org/community",
     },
     {

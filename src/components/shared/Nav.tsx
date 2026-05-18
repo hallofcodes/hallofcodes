@@ -1,20 +1,41 @@
 "use client";
 
-import {
-  faBars,
-  faPeopleGroup,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      const scrollingDown = currentY > lastScrollY.current;
+      const nearTop = currentY < 10;
+
+      if (scrollingDown && !nearTop) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-30 border-b border-gray-800/50 bg-gray-900/70 backdrop-blur">
+    <nav
+      className={`fixed left-0 top-0 z-30 w-full border-b border-gray-800/50 bg-gray-900/70 backdrop-blur transition-transform duration-300 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-3">
@@ -53,6 +74,12 @@ export default function Nav() {
               className="inline-flex items-center gap-2 text-gray-200 hover:text-blue-400"
             >
               Community
+            </Link>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 text-gray-200 hover:text-blue-400"
+            >
+              Portfolio
             </Link>
             <Link
               href="/blog"

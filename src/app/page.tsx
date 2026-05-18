@@ -50,7 +50,6 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
       />
-
       <section
         className="relative min-h-screen bg-black text-white overflow-hidden"
         aria-label="Hero"
@@ -104,6 +103,41 @@ export default async function Home() {
                 View Projects
               </Link>
             </div>
+          </div>
+        </div>
+
+        <div className="absolute right-25 xl:right-50 2xl:right-100 top-1/2 hidden -translate-y-1/2 flex-col gap-6 lg:flex">
+          <div className="w-80 rounded-2xl border border-white/10 bg-black/40 p-4 shadow-xl backdrop-blur">
+            <div className="mb-3 flex items-center gap-2 text-xs text-gray-300">
+              <span className="h-2 w-2 rounded-full bg-red-400" />
+              <span className="h-2 w-2 rounded-full bg-yellow-400" />
+              <span className="h-2 w-2 rounded-full bg-green-400" />
+              <span className="ml-2">collaboration.ts</span>
+            </div>
+            <pre className="text-xs text-gray-300 leading-relaxed text-wrap">
+              <code>
+                {`const team = ["design", "frontend", "backend"];
+const ship = (idea) => team.map(role => role);
+export const impact = ship("community");`}
+              </code>
+            </pre>
+          </div>
+
+          <div className="w-80 rounded-2xl border border-white/10 bg-black/40 p-4 shadow-xl backdrop-blur">
+            <div className="mb-3 flex items-center gap-2 text-xs text-gray-300">
+              <span className="h-2 w-2 rounded-full bg-red-400" />
+              <span className="h-2 w-2 rounded-full bg-yellow-400" />
+              <span className="h-2 w-2 rounded-full bg-green-400" />
+              <span className="ml-2">projects.md</span>
+            </div>
+            <pre className="text-xs text-gray-300 leading-relaxed text-wrap">
+              <code>
+                {`# Hall of Codes
+Build together, review together.
+Open source, real outcomes.
+Mentorship drives velocity.`}
+              </code>
+            </pre>
           </div>
         </div>
       </section>
