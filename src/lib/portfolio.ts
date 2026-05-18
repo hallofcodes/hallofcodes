@@ -15,6 +15,14 @@ const portfolio = [
     img_url: "/portfolio/mra1k3r0.vercel.app.png",
     link: "https://mra1k3r0.vercel.app",
   },
+  {
+    name: "Dave Conco",
+    title: "Full-Stack Engineer (Core Systems)",
+    description:
+      "Senior Full-Stack Developer specializing in high-performance architectures, scalable APIs, and real-time systems. Proven track record of building robust backend engines and modular developer tools from scratch.",
+    img_url: "https://raw.githubusercontent.com/dconco/dconco/refs/heads/main/public/portfolios/dconco.tech.png.png",
+    link: "https://dconco.tech",
+  },
 ];
 
 export default portfolio;
