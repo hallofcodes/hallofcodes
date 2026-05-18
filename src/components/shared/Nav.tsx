@@ -55,6 +55,12 @@ export default function Nav() {
               Community
             </Link>
             <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 text-gray-200 hover:text-blue-400"
+            >
+              Portfolio
+            </Link>
+            <Link
               href="/blog"
               className="inline-flex items-center gap-2 text-gray-200 hover:text-blue-400"
             >
