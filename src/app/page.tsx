@@ -151,7 +151,7 @@ export default async function Home() {
             </div>
 
             <div
-              className="overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory p-2 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800"
               style={{
                 WebkitMaskImage:
                   "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -159,16 +159,16 @@ export default async function Home() {
                 WebkitMaskSize: "100% 100%",
               }}
             >
-              <ul className="flex gap-4">
+              <div className="flex gap-4">
                 {timeline.map((timeline: TimelineEntry, index: number) => (
-                  <li
+                  <div
                     key={index}
                     className="min-w-[240px] snap-start rounded-xl bg-gray-800/60 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg md:min-w-[280px]"
                   >
                     <TimelineCard timeline={timeline} />
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <p className="text-xs text-gray-500">Swipe/scroll to explore →</p>

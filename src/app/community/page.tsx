@@ -156,63 +156,161 @@ export default function Community() {
       </section>
 
       <section className="min-h-screen border-t border-gray-900">
-        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16 md:flex-row md:items-center">
-          <div className="flex-1">
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16 lg:flex-row lg:items-center">
+          <div className="flex-1 space-y-4">
             <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
               Build
             </div>
             <h2 className="text-3xl font-bold md:text-4xl">
-              Contribute to open-source projects.
+              Contribute to open-source projects that matter.
             </h2>
             <p className="text-gray-300">
-              Whether you’re just starting or already experienced, there’s a
-              project that needs your contribution.
+              From first PRs to leadership roles, you can find meaningful ways
+              to build and grow alongside other builders.
             </p>
+            <div className="mt-4 inline-flex items-center rounded-xl bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-300">
+              Impact focused collaboration
+            </div>
           </div>
-          <div className="flex-1 space-y-4">
-            {[
-              "Starter-friendly issues",
-              "Design + Dev collaboration",
-              "Real-world product outcomes",
-            ].map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900/60 p-4"
-              >
-                <span className="h-2 w-2 rounded-full bg-blue-400" />
-                <div className="text-sm text-gray-200">{item}</div>
-              </div>
-            ))}
+
+          <div className="flex-1">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  title: "Starter friendly",
+                  desc: "Well scoped issues with clear guidance.",
+                },
+                {
+                  title: "Cross discipline",
+                  desc: "Designers and developers ship together.",
+                },
+                {
+                  title: "Real outcomes",
+                  desc: "Projects that solve real problems.",
+                },
+                {
+                  title: "Mentor support",
+                  desc: "Get feedback and direction fast.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl bg-gray-900/60 p-5 transition hover:bg-gray-900"
+                >
+                  <div className="text-sm font-semibold text-white">
+                    {item.title}
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">{item.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="min-h-screen border-t border-gray-900">
-        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6">
-              <h3 className="text-xl font-semibold">
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-8 px-6 py-16">
+          <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-3xl bg-gradient-to-br from-blue-500/15 to-blue-500/5 p-8">
+              <h3 className="text-2xl font-semibold">
                 Have an idea for an event or project?
               </h3>
-              <p className="mt-2 text-sm text-gray-400">
-                Pitch it. We back initiatives with people, resources, and
-                visibility.
+              <p className="mt-3 text-sm text-gray-300">
+                Pitch it and we will help shape it with people, resources, and
+                visibility across the community.
               </p>
-              <button className="mt-4 rounded-xl bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400">
+              <button className="mt-6 rounded-xl bg-blue-500 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-400">
                 Share Your Idea
               </button>
             </div>
 
-            <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6">
-              <h3 className="text-xl font-semibold">Share your knowledge.</h3>
-              <p className="mt-2 text-sm text-gray-400">
-                Publish tutorials, write blog posts, or host sessions. Become a
-                voice people trust.
-              </p>
-              <button className="mt-4 rounded-xl border border-gray-700 px-4 py-2 text-xs font-semibold text-gray-200 transition hover:border-gray-500 hover:text-white">
-                Contribute Content
-              </button>
+            <div className="flex flex-col gap-4">
+              <div className="rounded-2xl bg-gray-900/60 p-6">
+                <h3 className="text-xl font-semibold">Share your knowledge.</h3>
+                <p className="mt-2 text-sm text-gray-400">
+                  Publish tutorials, write blog posts, or host sessions to help
+                  others level up.
+                </p>
+                <button className="mt-4 rounded-xl bg-gray-800 px-4 py-2 text-xs font-semibold text-gray-200 transition hover:bg-gray-700">
+                  Contribute Content
+                </button>
+              </div>
+
+              <div className="rounded-2xl bg-gray-900/60 p-6">
+                <h3 className="text-xl font-semibold">Become a mentor.</h3>
+                <p className="mt-2 text-sm text-gray-400">
+                  Guide newer members and help projects ship with confidence.
+                </p>
+                <button className="mt-4 rounded-xl bg-gray-800 px-4 py-2 text-xs font-semibold text-gray-200 transition hover:bg-gray-700">
+                  Volunteer
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="min-h-screen border-t border-gray-900">
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-8 px-6 py-16">
+          <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
+            Sponsorship
+          </div>
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Supported by partners who believe in builders.
+          </h2>
+          <p className="max-w-2xl text-gray-300">
+            Our newest sponsor helps us grow the community and keep learning
+            accessible to everyone.
+          </p>
+
+          <Link
+            href="https://start.excelinweb.com/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship"
+            className="mt-4 rounded-2xl bg-gray-900/60 p-6"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-white">
+                  Newest sponsor
+                </div>
+                <div className="text-xs text-gray-400">ExcelinWeb</div>
+              </div>
+              <img
+                src="https://start.excelinweb.com/assets/images/logo/excelinweb-logo-white-transparent.png"
+                alt="ExcelinWeb logo"
+                className="h-10 w-auto opacity-90"
+              />
+            </div>
+
+            <div className="mt-4 grid gap-3 text-sm text-gray-300 md:grid-cols-3">
+              <div className="rounded-xl bg-gray-950/60 p-4">
+                Financial assistance for domain registration and related
+                infrastructure costs.
+              </div>
+              <div className="rounded-xl bg-gray-950/60 p-4">
+                Increased operational stability for the organization’s online
+                presence.
+              </div>
+              <div className="rounded-xl bg-gray-950/60 p-4">
+                Opportunity to build long-term relationships with industry
+                supporters and collaborators.
+              </div>
+            </div>
+          </Link>
+
+          <div className="rounded-2xl bg-gray-900/60 p-6">
+            <h3 className="text-xl font-semibold text-white">
+              Want to sponsor Hall of Codes?
+            </h3>
+            <p className="mt-2 text-sm text-gray-300">
+              Reach us through our official channels above and we will guide you
+              through the sponsorship options.
+            </p>
+            <Link
+              href="#connect"
+              className="mt-4 inline-flex items-center rounded-xl bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400"
+            >
+              Contact us via official channels
+            </Link>
           </div>
         </div>
       </section>
