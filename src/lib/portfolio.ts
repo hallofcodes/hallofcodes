@@ -1,4 +1,12 @@
-const portfolio = [
+export type PortfolioItem = {
+  name: string;
+  title: string;
+  description: string;
+  img_url: string;
+  link: string;
+};
+
+const portfolio: PortfolioItem[] = [
   {
     name: "Melvin Jones Repol",
     title: "Founder & Software Engineer",
@@ -20,8 +28,24 @@ const portfolio = [
     title: "Full-Stack Engineer (Core Systems)",
     description:
       "Senior Full-Stack Developer specializing in high-performance architectures, scalable APIs, and real-time systems. Proven track record of building robust backend engines and modular developer tools from scratch.",
-    img_url: "https://raw.githubusercontent.com/dconco/dconco/refs/heads/main/public/portfolios/dconco.tech.png",
+    img_url: "/portfolio/dconco.tech.png",
     link: "https://dconco.tech",
+  },
+  {
+    name: "Jerome Edica",
+    title: "Full Stack Developer",
+    description:
+      "The full stack developer who can do it all. With a passion for both frontend and backend development, Jerome is a versatile developer who can handle any project.",
+    img_url: "/portfolio/jeromeedica.vercel.app.png",
+    link: "https://jeromeedica.vercel.app",
+  },
+  {
+    name: "John Relix",
+    title: "Developer | Cybersecurity Researcher | Data Analyst",
+    description:
+      "The developer who wears many hats. With a passion for cybersecurity and data analysis, John is a developer who can also help you secure your applications and analyze your data.",
+    img_url: "/portfolio/johnrelixdev.vercel.app.png",
+    link: "https://johnrelixdev.vercel.app",
   },
 ];
 

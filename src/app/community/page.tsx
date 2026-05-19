@@ -156,24 +156,26 @@ export default function Community() {
       </section>
 
       <section className="min-h-screen border-t border-gray-900">
-        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-10 px-6 py-16 lg:flex-row lg:items-center">
-          <div className="flex-1 space-y-4">
-            <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
-              Build
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-8 px-6 py-16">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                Build
+              </div>
+              <h2 className="text-3xl font-bold md:text-4xl">
+                Build, share, and grow with the community.
+              </h2>
+              <p className="max-w-2xl text-gray-300">
+                Contribute to meaningful open-source projects, pitch new ideas,
+                and help others level up through knowledge sharing.
+              </p>
             </div>
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Contribute to open-source projects that matter.
-            </h2>
-            <p className="text-gray-300">
-              From first PRs to leadership roles, you can find meaningful ways
-              to build and grow alongside other builders.
-            </p>
-            <div className="mt-4 inline-flex items-center rounded-xl bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-300">
+            <div className="inline-flex items-center rounded-xl bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-300">
               Impact focused collaboration
             </div>
           </div>
 
-          <div className="flex-1">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
@@ -192,41 +194,42 @@ export default function Community() {
                   title: "Mentor support",
                   desc: "Get feedback and direction fast.",
                 },
-              ].map((item) => (
+              ].map((item, idx) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl bg-gray-900/60 p-5 transition hover:bg-gray-900"
+                  className="flex items-start gap-3 rounded-2xl bg-gray-900/70 p-4 transition hover:bg-gray-900"
                 >
-                  <div className="text-sm font-semibold text-white">
-                    {item.title}
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-xs font-semibold text-blue-300">
+                    {String(idx + 1).padStart(2, "0")}
                   </div>
-                  <div className="mt-1 text-xs text-gray-400">{item.desc}</div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">
+                      {item.title}
+                    </div>
+                    <div className="mt-1 text-xs text-gray-400">
+                      {item.desc}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="min-h-screen border-t border-gray-900">
-        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-8 px-6 py-16">
-          <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-3xl bg-gradient-to-br from-blue-500/15 to-blue-500/5 p-8">
-              <h3 className="text-2xl font-semibold">
-                Have an idea for an event or project?
-              </h3>
-              <p className="mt-3 text-sm text-gray-300">
-                Pitch it and we will help shape it with people, resources, and
-                visibility across the community.
-              </p>
-              <button className="mt-6 rounded-xl bg-blue-500 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-400">
-                Share Your Idea
-              </button>
-            </div>
 
             <div className="flex flex-col gap-4">
+              <div className="rounded-3xl bg-gradient-to-br from-blue-500/15 to-blue-500/5 p-6">
+                <h3 className="text-xl font-semibold">
+                  Have an idea for an event or project?
+                </h3>
+                <p className="mt-2 text-sm text-gray-300">
+                  Pitch it and we will help shape it with people, resources, and
+                  visibility across the community.
+                </p>
+                <button className="mt-4 rounded-xl bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400">
+                  Share Your Idea
+                </button>
+              </div>
+
               <div className="rounded-2xl bg-gray-900/60 p-6">
-                <h3 className="text-xl font-semibold">Share your knowledge.</h3>
+                <h3 className="text-lg font-semibold">Share your knowledge.</h3>
                 <p className="mt-2 text-sm text-gray-400">
                   Publish tutorials, write blog posts, or host sessions to help
                   others level up.
@@ -237,7 +240,7 @@ export default function Community() {
               </div>
 
               <div className="rounded-2xl bg-gray-900/60 p-6">
-                <h3 className="text-xl font-semibold">Become a mentor.</h3>
+                <h3 className="text-lg font-semibold">Become a mentor.</h3>
                 <p className="mt-2 text-sm text-gray-400">
                   Guide newer members and help projects ship with confidence.
                 </p>
@@ -311,6 +314,94 @@ export default function Community() {
             >
               Contact us via official channels
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="min-h-screen border-t border-gray-900">
+        <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-center gap-8 px-6 py-16">
+          <div className="text-xs font-semibold uppercase tracking-widest text-blue-400">
+            Portfolio Flex
+          </div>
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Flex your portfolio designs with the community.
+          </h2>
+          <p className="max-w-2xl text-gray-300">
+            Members can showcase their awesome portfolio designs built with
+            their own themes and style, and get discovered by the community.
+          </p>
+
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="rounded-2xl border border-gray-800/60 bg-gray-900/50 p-6 shadow-sm">
+              <div className="inline md:flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-white">
+                    Portfolio originality criteria
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-300">
+                    To maintain a credible, high-quality showcase, submissions
+                    must reflect original work and clear ownership.
+                  </p>
+                </div>
+                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-[10px] font-semibold text-blue-300">
+                  Required
+                </span>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {[
+                  "Your portfolio must be authored by you and reflect your own projects or contributions.",
+                  "Forked or copied projects without meaningful original work are not accepted.",
+                  "If you used a starter, clearly document what you built and how you extended it.",
+                  "We may request proof of ownership or contribution history when needed.",
+                ].map((item, index) => (
+                  <div
+                    key={item}
+                    className="flex gap-3 rounded-xl border border-gray-800/60 bg-gray-950/40 p-4"
+                  >
+                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/10 text-xs font-semibold text-blue-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <p className="text-sm text-gray-300">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-gray-900/60 p-6">
+              <h3 className="text-xl font-semibold text-white">
+                How to contribute your portfolio
+              </h3>
+              <p className="mt-2 text-sm text-gray-300">
+                Follow these steps to get featured in the Portfolio Flex.
+              </p>
+              <ol className="mt-4 space-y-3 text-sm text-gray-300">
+                <li className="rounded-xl bg-gray-950/60 p-3">
+                  Fork the repository and create your branch.
+                </li>
+                <li className="rounded-xl bg-gray-950/60 p-3">
+                  Add your entry to{" "}
+                  <span className="text-blue-300">lib/portfolio.ts</span>.
+                </li>
+                <li className="rounded-xl bg-gray-950/60 p-3">
+                  Save your portfolio screenshot in{" "}
+                  <span className="text-blue-300">public/portfolio</span>.
+                </li>
+                <li className="rounded-xl bg-gray-950/60 p-3">
+                  Compress the image using{" "}
+                  <span className="text-blue-300">
+                    https://imagecompressor.com/
+                  </span>
+                  .
+                </li>
+              </ol>
+              <Link
+                href="/portfolio"
+                className="mt-5 inline-flex items-center rounded-xl bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400"
+              >
+                View Portfolio Flex
+              </Link>
+            </div>
           </div>
         </div>
       </section>

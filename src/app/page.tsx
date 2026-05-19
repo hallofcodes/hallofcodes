@@ -143,7 +143,7 @@ Mentorship drives velocity.`}
       </section>
 
       <section className="min-h-screen bg-gray-900">
-        <div className="mx-auto flex flex-col lg:flex-row min-h-screen max-w-6xl  items-center gap-10 px-6 py-20">
+        <div className="mx-auto flex flex-col lg:flex-row min-h-screen max-w-7xl  items-center gap-10 px-6 py-20">
           <div className="w-full lg:w-[55%]">
             <ScrambleText
               as="h2"
@@ -398,6 +398,7 @@ Mentorship drives velocity.`}
                   src="https://avatars.githubusercontent.com/mrepol742"
                   alt="Founder of Hall of Codes"
                   className="rounded-lg w-full h-56 object-cover mb-4 transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="flex items-center justify-between gap-3">
                   <div>
@@ -420,6 +421,7 @@ Mentorship drives velocity.`}
                   src="https://avatars.githubusercontent.com/samiunnafis"
                   alt="Co-founder of Hall of Codes"
                   className="rounded-lg w-full h-56 object-cover mb-4 transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="flex items-center justify-between gap-3">
                   <div>

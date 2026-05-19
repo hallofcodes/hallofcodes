@@ -12,11 +12,10 @@ export default function MemberCard({ member }: { member: Member }) {
         alt={member.login}
         width={96}
         height={96}
+        loading="lazy"
         className="group-hover:scale-110 transition-transform duration-300 rounded-full mb-4 object-cover"
       />
-      <div className="font-medium text-white">
-        {member.login}
-      </div>
+      <div className="font-medium text-white">{member.login}</div>
     </article>
   );
 }
