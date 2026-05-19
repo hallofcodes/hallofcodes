@@ -1,4 +1,12 @@
-const portfolio = [
+export type PortfolioItem = {
+  name: string;
+  title: string;
+  description: string;
+  img_url: string;
+  link: string;
+};
+
+const portfolio: PortfolioItem[] = [
   {
     name: "Melvin Jones Repol",
     title: "Founder & Software Engineer",

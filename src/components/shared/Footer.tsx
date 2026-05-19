@@ -28,6 +28,7 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 alt="Hall of Codes"
                 width={48}
                 height={48}
+                loading="lazy"
                 className="rounded-full"
               />
               <div>
@@ -111,6 +112,39 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
           <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div>
               <h4 className="text-sm font-semibold text-white mb-3">
+                Quick Links
+              </h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <Link href="/" className="hover:underline">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/members" className="hover:underline">
+                    Members
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects" className="hover:underline">
+                    Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/portfolio" className="hover:underline">
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="hover:underline">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">
                 Recent Posts
               </h4>
               {posts.length > 0 ? (
@@ -133,22 +167,6 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Legal</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/terms-of-service" className="hover:underline">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/privacy-policy" className="hover:underline">
-                    Privacy Policy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
               <h4 className="text-sm font-semibold text-white mb-3">
                 Community
               </h4>
@@ -164,6 +182,22 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 <li>
                   <Link href="/community" className="hover:underline">
                     Join the Community
+                  </Link>
+                </li>
+              </ul>
+
+              <h4 className="mt-5 text-sm font-semibold text-white mb-3">
+                Legal
+              </h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <Link href="/terms-of-service" className="hover:underline">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy" className="hover:underline">
+                    Privacy Policy
                   </Link>
                 </li>
               </ul>
