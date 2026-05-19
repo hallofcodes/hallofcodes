@@ -41,7 +41,12 @@ export const metadata: Metadata = {
     "technology",
     "software development",
   ],
-  authors: [{ name: "Melvin Jones Repol", url: "https://mrepol742.github.io" }],
+  authors: [
+    {
+      name: "The Hall of Codes Team",
+      url: "https://www.hallofcodes.org/members",
+    },
+  ],
   creator: "Melvin Jones Repol",
   alternates: {
     canonical: "https://www.hallofcodes.org/",

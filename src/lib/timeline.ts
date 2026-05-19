@@ -43,15 +43,9 @@ const timeline: TimelineEntry[] = [
   },
   {
     date: "May 2026",
-    heading: "A Bold New Redesign",
+    heading: "Redesigned, LinkedIn & .org Launch",
     description:
-      "We dressed the site in enterprise-grade polish with enough personality to keep it unmistakably ours. The result: modern, sleek, and ready to scale with the community’s momentum.",
-  },
-  {
-    date: "May 2026",
-    heading: "Now in LinkedIn Organization",
-    description:
-      "We expanded our presence to LinkedIn, because why not? The professional world needed a dose of our unique blend of code and comedy, and we were more than happy to deliver.",
+      "We went all in on the new look and expanded our digital footprint with a LinkedIn page and a .org domain. The community’s online presence got a major upgrade, matching the energy and professionalism of our members.",
   },
 ];
 
