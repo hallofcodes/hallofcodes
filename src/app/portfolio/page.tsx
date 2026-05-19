@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import portfolio from "@/lib/portfolio";
 import { Metadata } from "next";
+import PortfolioCard from "@/components/ui/PortfolioCard";
 
 export const metadata: Metadata = {
   title: "Portfolio - Hall of Codes",
@@ -65,50 +66,8 @@ export default function Portfolio() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolioItems.map((item, index) => (
-            <article
-              key={item.name}
-              className="group flex flex-col rounded-2xl bg-gray-900/60 p-5 transition hover:bg-gray-900"
-            >
-              <div className="relative h-44 w-full overflow-hidden rounded-xl">
-                <Image
-                  src={item.img_url}
-                  alt={`${item.name} portfolio preview`}
-                  fill
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-
-              <div className="mt-4 flex items-start justify-between gap-3">
-                <div>
-                  <h2 className="text-lg font-semibold text-white">
-                    {item.name}
-                  </h2>
-                  <p className="text-xs text-blue-300">{item.title}</p>
-                </div>
-
-                <div className="rounded-lg bg-gray-950/60 px-2 py-1 text-right">
-                  <div className="text-[10px] text-gray-400">
-                    Contribution {String(index + 1).padStart(2, "0")}
-                  </div>
-                </div>
-              </div>
-
-              <p className="mt-3 text-sm text-gray-300 line-clamp-3">
-                {item.description}
-              </p>
-
-              <div className="mt-4 flex items-center gap-3">
-                <Link
-                  href={item.link}
-                  target="_blank"
-                  className="inline-flex items-center rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-blue-500"
-                >
-                  View Portfolio
-                </Link>
-              </div>
-            </article>
+          {portfolioItems.map((portfolioItem, index) => (
+            <PortfolioCard key={index} portfolioItem={portfolioItem} index={index} />
           ))}
         </div>
 

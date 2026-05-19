@@ -15,6 +15,7 @@ export default function ProjectCard({ project }: { project: Repo }) {
           alt={project.name}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-110"
+          loading="lazy"
         />
       </div>
       <div className="flex-1">
