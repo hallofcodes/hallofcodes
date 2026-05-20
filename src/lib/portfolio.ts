@@ -24,6 +24,14 @@ const portfolio: PortfolioItem[] = [
     link: "https://mra1k3r0.vercel.app",
   },
   {
+    name: "Dave Conco",
+    title: "Full-Stack Engineer (Core Systems)",
+    description:
+      "Senior Full-Stack Developer specializing in high-performance architectures, scalable APIs, and real-time systems. Proven track record of building robust backend engines and modular developer tools from scratch.",
+    img_url: "/portfolio/dconco.tech.png",
+    link: "https://dconco.tech",
+  },
+  {
     name: "Jerome Edica",
     title: "Full Stack Developer",
     description:
