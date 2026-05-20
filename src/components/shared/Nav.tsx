@@ -133,6 +133,13 @@ export default function Nav() {
             Community
           </Link>
           <Link
+            href="/portfolio"
+            className="block py-2 px-3 rounded hover:bg-gray-800 text-gray-200"
+            onClick={() => setOpen(false)}
+          >
+            Portfolio
+          </Link>
+          <Link
             href="/blog"
             className="block py-2 px-3 rounded hover:bg-gray-800 text-gray-200"
             onClick={() => setOpen(false)}

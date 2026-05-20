@@ -11,10 +11,13 @@ import timeline, { TimelineEntry } from "@/lib/timeline";
 import TimelineCard from "@/components/ui/TimelineCard";
 import { getRecentPosts, PostEntry } from "@/lib/posts";
 import BlogCard from "@/components/ui/BlogCard";
+import { fetchTrackedMembers } from "@/lib/wakatime/leaderboards";
+import HallOfFame from "./components/HallOfFame";
 
 export default async function Home() {
-  const [members, repositories, posts] = await Promise.all([
+  const [members, getLeaderboards, repositories, posts] = await Promise.all([
     getMembers(),
+    fetchTrackedMembers(),
     getRepositories(),
     getRecentPosts(4),
   ]);
@@ -75,13 +78,13 @@ export default async function Home() {
               as="h1"
               text="Hall of Codes"
               durationMs={2000}
-              className="text-4xl sm:text-6xl font-bold tracking-tight mb-4"
+              className="text-4xl sm:text-6xl font-bold tracking-tight text-blue-500 mb-4"
               aria-label="Hall of Codes - Merging Programmers Beyond Conflicts"
             />
-            <p className="text-lg sm:text-2xl text-gray-200 mb-4">
+            <span className="text-xs uppercase tracking-[0.3em] text-blue-400 font-semibold">
               Merging Programmers Beyond Conflicts
-            </p>
-            <p className="text-sm sm:text-base text-gray-300 max-w-2xl mb-6 line-clamp-2 md:line-clamp-3">
+            </span>
+            <p className="text-sm sm:text-base text-blue-300 max-w-2xl mb-6 line-clamp-2 md:line-clamp-3">
               We revolutionize development by fostering cohesion among teams,
               transcending conflicts to drive collective innovation. Harnessing
               the synergy of diverse talents, we pave the way for seamless
@@ -144,10 +147,10 @@ Mentorship drives velocity.`}
 
       <section className="min-h-screen bg-gray-900">
         <div className="mx-auto flex flex-col lg:flex-row min-h-screen max-w-7xl  items-center gap-10 px-6 py-20">
-          <div className="w-full lg:w-[55%]">
+          <div className="w-full lg:w-[30%]">
             <ScrambleText
               as="h2"
-              text="About Hall of Codes"
+              text="About Us"
               durationMs={2000}
               className="text-3xl font-semibold text-white md:text-4xl"
               aria-label="About Hall of Codes - Merging Programmers Beyond Conflicts"
@@ -176,7 +179,7 @@ Mentorship drives velocity.`}
             </div>
           </div>
 
-          <div className="w-full lg:w-[45%]">
+          <div className="w-full lg:w-[65%]">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-medium text-gray-200">Milestones</h3>
               <span className="text-xs uppercase tracking-widest text-blue-400">
@@ -214,13 +217,25 @@ Mentorship drives velocity.`}
 
       <section className="min-h-screen flex items-center bg-gray-800">
         <div className="max-w-6xl mx-auto px-6 py-20">
+          <HallOfFame members={getLeaderboards} />
+        </div>
+      </section>
+
+      <section className="min-h-screen flex items-center bg-gray-800">
+        <div className="max-w-6xl mx-auto px-6 py-20">
           <ScrambleText
             as="h2"
             text="Some of Our Members"
             durationMs={2000}
-            className="text-3xl font-semibold text-white mb-8"
+            className="text-3xl font-semibold text-white mb-3"
             aria-label="Some of Our Members - Merging Programmers Beyond Conflicts"
           />
+          <p className="text-gray-300 mb-6">
+            Our members are the heart of Hall of Codes. They come from all
+            backgrounds and skill levels, united by a passion for collaboration
+            and open-source. Below are just a few of the talented individuals
+            who make our community thrive.
+          </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-6">
             {members.slice(0, 12).map((member: Member, index: number) => (
@@ -236,9 +251,16 @@ Mentorship drives velocity.`}
             as="h2"
             text="Some of Our Projects"
             durationMs={2000}
-            className="text-3xl font-semibold text-white mb-8"
+            className="text-3xl font-semibold text-white mb-3"
             aria-label="Some of Our Projects - Merging Programmers Beyond Conflicts"
           />
+          <p className="text-gray-300 mb-6">
+            We’ve launched a variety of open-source projects across different
+            domains, all built collaboratively by our members. From developer
+            tools to community resources, these projects embody our mission of
+            fostering collaboration and reducing friction in the development
+            process.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {repositories.slice(0, 6).map((repository: Repo, index: number) => (
@@ -261,9 +283,15 @@ Mentorship drives velocity.`}
               as="h2"
               text="Latest from Our Blog"
               durationMs={2000}
-              className="text-3xl font-semibold text-white mb-8"
+              className="text-3xl font-semibold text-white mb-3"
               aria-label="Latest from Our Blog - Merging Programmers Beyond Conflicts"
             />
+            <p className="text-gray-300 mb-6">
+              Our blog is where we share insights, stories, and updates about
+              our community and projects. From deep dives into our development
+              process to reflections on collaboration, our blog is a space for
+              learning and connection. Here are some of our latest posts.
+            </p>
 
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {posts.map((post: PostEntry, index: number) => (
