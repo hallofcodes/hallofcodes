@@ -2,7 +2,7 @@ import RSS from "rss";
 import { getAllPosts } from "@/lib/posts";
 
 export async function generateRssFeed() {
-  const site_url = "https://www.hallofcodes.com";
+  const site_url = "https://www.hallofcodes.org";
 
   const feed = new RSS({
     title: "Our Blog",
