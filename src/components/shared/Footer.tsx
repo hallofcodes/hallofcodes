@@ -172,6 +172,11 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
               </h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
+                  <Link href="/subdomain-program" className="hover:underline">
+                    Subdomain Program
+                  </Link>
+                </li>
+                <li>
                   <Link
                     href="/community-guidelines"
                     className="hover:underline"
