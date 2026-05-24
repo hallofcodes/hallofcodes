@@ -1,3 +1,5 @@
+"use client";
+
 import { PostEntry } from "@/lib/posts";
 import {
   faFacebook,
@@ -6,8 +8,10 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Footer({ posts }: { posts: PostEntry[] }) {
   const startYear = 2019;
@@ -16,12 +20,32 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
     startYear === currentYear
       ? `${currentYear}`
       : `${startYear} - ${currentYear}`;
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const languages = [
+    { code: "en", label: "English", region: "Global", short: "EN" },
+  ];
+
+  const handleLocaleChange = (nextLocale: string) => {
+    if (nextLocale === locale) return;
+
+    const normalizedPath = pathname.replace(
+      /^\/(en|fil|cmn|es|hi)(?=\/|$)/,
+      "",
+    );
+    const nextPath = `/${nextLocale}${normalizedPath || "/"}`;
+    // replace and refresh to ensure the new locale is applied immediately
+    router.replace(nextPath);
+    router.refresh();
+  };
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="max-w-screen-xl mx-auto px-6 py-10">
-        <div className="md:flex md:justify-between md:items-start gap-8">
-          <div className="md:w-1/3">
+      <div className="mx-auto px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          <div>
             <div className="flex items-start gap-3">
               <Image
                 src="/hoc-icon.png"
@@ -108,104 +132,110 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
               </a>
             </div>
           </div>
-
-          <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-3">
-                Quick Links
-              </h4>
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-3">
+              Quick Links
+            </h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link href="/" className="hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/members" className="hover:underline">
+                  Members
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="hover:underline">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/portfolio" className="hover:underline">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:underline">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-of-service" className="hover:underline">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:underline">
+                  Privacy Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-3">
+              Recent Posts
+            </h4>
+            {posts.length > 0 ? (
               <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/" className="hover:underline">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/members" className="hover:underline">
-                    Members
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects" className="hover:underline">
-                    Projects
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/portfolio" className="hover:underline">
-                    Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="hover:underline">
-                    Blog
-                  </Link>
-                </li>
+                {posts.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="hover:underline line-clamp-1"
+                      title={post.title}
+                    >
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-3">
-                Recent Posts
-              </h4>
-              {posts.length > 0 ? (
-                <ul className="space-y-2 text-gray-400">
-                  {posts.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="hover:underline line-clamp-1"
-                        title={post.title}
-                      >
-                        {post.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-gray-400 text-sm">No recent posts.</p>
-              )}
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-3">
-                Community
-              </h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/subdomain-program" className="hover:underline">
-                    Subdomain Program
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/community-guidelines"
-                    className="hover:underline"
-                  >
-                    Community Guidelines
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/community" className="hover:underline">
-                    Join the Community
-                  </Link>
-                </li>
-              </ul>
-
-              <h4 className="mt-5 text-sm font-semibold text-white mb-3">
-                Legal
-              </h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/terms-of-service" className="hover:underline">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/privacy-policy" className="hover:underline">
-                    Privacy Policy
-                  </Link>
-                </li>
-              </ul>
+            ) : (
+              <p className="text-gray-400 text-sm">No recent posts.</p>
+            )}
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-3">Community</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link href="/subdomain-program" className="hover:underline">
+                  Subdomain Program
+                </Link>
+              </li>
+              <li>
+                <Link href="/community-guidelines" className="hover:underline">
+                  Community Guidelines
+                </Link>
+              </li>
+              <li>
+                <Link href="/community" className="hover:underline">
+                  Join the Community
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold mb-2 text-white">
+              Language / Region
+            </h4>
+            <div className="relative">
+              <select
+                value={locale}
+                onChange={(e) => handleLocaleChange(e.target.value)}
+                className="w-full appearance-none rounded-lg border border-gray-800 bg-gray-950/40 px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                aria-label="Select language"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.label} · {lang.region}
+                  </option>
+                ))}
+              </select>
+              <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">
+                ▼
+              </span>
             </div>
           </div>
         </div>
@@ -223,12 +253,11 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
           </div>
 
           <div className="text-sm text-gray-400">
-            Built with ♥ ·{" "}
             <Link
               href="https://github.com/hallofcodes"
               className="hover:underline"
             >
-              github.com/hallofcodes
+              This site is open source.
             </Link>
           </div>
         </div>

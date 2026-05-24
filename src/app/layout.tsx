@@ -28,6 +28,8 @@ const mavenPro = Maven_Pro({
   variable: "--font-body",
 });
 
+export const revalidate = 43200; // 12 hours (in seconds)
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hallofcodes.org"),
   title: "Hall of Codes - Merging Programmers Beyond Conflicts",
@@ -104,32 +106,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const posts = getRecentPosts(5);
-  const messages = await getMessages();
-
   return (
     <html
-      lang="en"
       className={`${sourceCodePro.variable} ${mavenPro.variable}`}
       data-scroll-behavior="smooth"
     >
-      <Head>
+      <head>
         <meta name="hostname" content="www.hallofcodes.org" />
-      </Head>
+      </head>
+
       <body className="antialiased">
         <AOSWrapper />
 
-        <NextIntlClientProvider messages={messages}>
-          <Nav />
-
-          <NextTopLoader showSpinner={false} />
-
-          <main>{children}</main>
-
-          <ScrollTop />
-
-          <Footer posts={posts} />
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );

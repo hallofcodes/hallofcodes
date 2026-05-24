@@ -18,6 +18,7 @@ async function fetchLeaderboardPage(page: number): Promise<WakaTimeUser[]> {
     headers: {
       "User-Agent": "Mozilla/5.0",
     },
+    next: { revalidate: 10800 }, // 3 hours
   });
 
   if (!res.ok) {
