@@ -23,7 +23,7 @@ export async function getRepositories(): Promise<Repo[]> {
     const res = await fetch(
       `https://api.github.com/orgs/${org}/repos?per_page=${perPage}&page=${page}`,
       {
-        next: { revalidate: 60 * 60 * 6 }, // 6 hours cache
+        next: { revalidate: 10800 }, // 3 hours
       },
     );
 
