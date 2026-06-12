@@ -1,6 +1,7 @@
 export type Member = {
   login: string;
   avatar: string;
+  location: [number, number] | null;
 };
 
 export async function getMembers(): Promise<Member[]> {

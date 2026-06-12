@@ -48,26 +48,48 @@ export default function Portfolio() {
   const portfolioItems = portfolio;
 
   return (
-    <main className="bg-gray-950 text-white mt-10">
+    <main className="bg-gray-950 text-white">
+      <section className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />
+
+        <div className="relative mx-auto flex min-h-screen max-w-screen-xl flex-col items-start justify-center gap-8 px-6 py-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-blue-300">
+            Hall of Codes Portfolio
+          </div>
+
+          <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+            The people behind the build.
+            <span className="block text-blue-400">Meet their portfolios.</span>
+          </h1>
+          <p className="max-w-2xl text-base text-gray-300 md:text-lg">
+            Explore the people who drive Hall of Codes and the personal
+            portfolios that show their craft.
+          </p>
+        </div>
+      </section>
+
       <section className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-16">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-4 py-1 text-xs font-semibold text-blue-300">
-            Hall of Codes Portfolio
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-            Community profiles
+            Portfolio
           </div>
           <h1 className="text-4xl font-bold md:text-5xl">
             Builders with real impact.
           </h1>
           <p className="max-w-2xl text-gray-300">
-            Explore the people who drive Hall of Codes and the personal
-            portfolios that show their craft.
+            The portfolio showcases the builders who contribute to Hall of
+            Codes, highlighting their work and impact.
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {portfolioItems.map((portfolioItem, index) => (
-            <PortfolioCard key={index} portfolioItem={portfolioItem} index={index} />
+            <PortfolioCard
+              key={index}
+              portfolioItem={portfolioItem}
+              index={index}
+            />
           ))}
         </div>
 
