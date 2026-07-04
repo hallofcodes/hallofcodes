@@ -4,6 +4,7 @@ date: "2026-05-23"
 excerpt: "A practical look at why exposing origin IPs still breaks modern security assumptions, and why tools like CF-Hero highlight the cracks in CAPTCHA and Cloudflare-era protection."
 topics: ["cybersecurity", "cloudflare", "vps-security", "web-infrastructure"]
 author: "mrepol742"
+author_url: "https://github.com/mrepol742"
 ---
 
 I used to think putting a site behind Cloudflare and slapping a CAPTCHA on it was basically the digital equivalent of locking the front door and installing a security system. That illusion lasted right up until I started looking into how origin IP exposure still quietly ruins everything. One misconfigured DNS record, one leaked subdomain, or one forgotten direct server endpoint and suddenly your “protected” VPS is just a public IP on the internet with opinions from bots. It is weird how often people forget that the internet still fundamentally routes to an address, not a brand name. Once that address is known, the rest of the security stack starts feeling more like decoration than defense. And that is where tools like CF-Hero enter the conversation.

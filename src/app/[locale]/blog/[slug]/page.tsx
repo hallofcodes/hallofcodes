@@ -34,12 +34,27 @@ export async function generateMetadata({
     title: post.data.title ?? "Blog Post",
     description: post.data.excerpt ?? "Read this blog post.",
     keywords: post.data.topics,
+    authors: [
+      {
+        name: post.data.author,
+        url: post.data.author_url ?? undefined,
+      },
+    ],
     openGraph: {
       title: post.data.title,
       description: post.data.excerpt,
       type: "article",
       siteName: "Hall of Codes",
       locale: "en_US",
+      images: [
+        {
+          url:
+            post.data.og_image ?? "https://www.hallofcodes.org/hoc-cover.png",
+          width: 1200,
+          height: 630,
+          alt: post.data.title ?? "Hall of Codes Logo",
+        },
+      ],
     },
     alternates: {
       canonical: `https://www.hallofcodes.org/blog/${slug}`,
@@ -48,6 +63,15 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.data.title,
       description: post.data.excerpt,
+      images: [
+        {
+          url:
+            post.data.og_image ?? "https://www.hallofcodes.org/hoc-cover.png",
+          width: 1200,
+          height: 630,
+          alt: post.data.title ?? "Hall of Codes Logo",
+        },
+      ],
     },
   };
 }
@@ -134,7 +158,14 @@ export default async function BlogPost({
             <div className="text-gray-400 mb-6">{data.excerpt}</div>
 
             <p className="text-sm text-muted-foreground">
-              @{data.author} • {data.date} • {estimatedReadingTime} min read
+              <a
+                href={data.author_url ?? "#"}
+                target="_blank"
+                title={data.author}
+              >
+                @{data.author}
+              </a>{" "}
+              • {data.date} • {estimatedReadingTime} min read
             </p>
 
             {data.topics && data.topics.length > 0 && (
