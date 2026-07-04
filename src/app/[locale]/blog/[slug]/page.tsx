@@ -13,6 +13,8 @@ import {
 } from "@/lib/posts";
 import BlogCard from "@/components/ui/BlogCard";
 
+export const dynamic = "force-static";
+
 export async function generateMetadata({
   params,
 }: {

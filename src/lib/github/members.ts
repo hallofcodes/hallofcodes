@@ -1,6 +1,7 @@
 export type Member = {
   login: string;
   avatar: string;
+  location: [number, number] | null;
 };
 
 export async function getMembers(): Promise<Member[]> {
@@ -14,8 +15,7 @@ export async function getMembers(): Promise<Member[]> {
     const res = await fetch(
       `https://api.github.com/orgs/${org}/public_members?per_page=${perPage}&page=${page}`,
       {
-        // this is 6 hours
-        next: { revalidate: 60 * 60 * 6 },
+        next: { revalidate: 10800 }, // 3 hours
       },
     );
 
