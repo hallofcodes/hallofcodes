@@ -75,7 +75,7 @@ For pages, I write a `Component` that fetches data (usually through Eloquent) an
 
 ```php
 return new Component(function () {
-    $notifications = Notifications::where('user_id', Auth::id());
+    $notifications = Notifications::where('user_id', Auth::id())->get();
 
     return render(<<<HTML
         <div class="notificationPage">
@@ -87,7 +87,7 @@ return new Component(function () {
                         {% for notification in notifications %}
                             {% set userAvatar = notification.avatar %}
                             <div class="card {{ notification.read ? 'seen' : 'unseen' }}">
-                                <div class="img"><img loading="lazy" src="{{ userAvatar }}" /></div>
+                                <div class="img"><img loading="lazy" src="{{ userAvatar }}" alt="" /></div>
                                 <div class="dits">
                                     <div class="title">{{ notification.title }}</div>
                                     <div class="info">{{ notification.body }}</div>
