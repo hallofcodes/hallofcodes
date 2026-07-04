@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Community() {
   return (
-    <main className="bg-gray-950 text-white mt-10">
+    <main className="bg-gray-950 text-white">
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />
