@@ -1,0 +1,189 @@
+---
+title: "How Senior Developers Write PHP in 2026"
+date: "2026-07-04"
+excerpt: "How I build modern PHP apps in 2026 without a heavyweight framework — phpspa for components and routing, Laravel Eloquent for models, Symfony Twig for templating, and two small libraries I built myself for validation and migrations."
+topics: ["php", "phpspa", "eloquent", "twig", "validation", "migrations"]
+author: "dconco"
+---
+
+Most PHP developers assume you need to pick one big framework and live inside its walls. I don't think that's true anymore, and I want to show you the stack I actually ship with in 2026.
+
+The idea is simple: use small, focused libraries that each do one thing well, and glue them together in pure PHP. No bloat, no fighting a framework's opinions, no 40-file boilerplate just to add a route. Here's the combo.
+
+## The core: phpspa
+
+[phpspa](https://github.com/dconco/phpspa) is the library that makes this whole approach possible. It's marketed as a component-based library for building reactive UIs in pure PHP, inspired by React — but that undersells it. It also fully supports API-first routing, prefixes, and middleware, so you can build an entire backend API with it, not just server-rendered pages.
+
+**Install it:**
+
+```bash
+composer require dconco/phpspa
+```
+
+**Or scaffold a full project:**
+
+```bash
+composer create-project phpspa/phpspa ProjectName
+```
+
+If you prefer building your frontend with Vite instead of server-rendered components, there's a dedicated client:
+
+```bash
+composer create-project phpspa/client ProjectName
+```
+Docs: [phpspa-client](https://github.com/dconco/phpspa-client)
+
+And if you want to pair phpspa with React specifically:
+
+```bash
+composer create-project dconco/phpspa-react project_name
+```
+Docs: [phpspa-react](https://github.com/dconco/phpspa-react)
+
+Full documentation lives at [phpspa.tech](https://phpspa.tech).
+
+## Routing that scales like a real API framework
+
+phpspa's router supports nested prefixes, grouped middleware, and typed URL parameters right out of the box:
+
+```php
+new App()
+    ->prefix('/api/v1', function (Router $router) {
+        $router->prefix('/admin', function (Router $admin_r) {
+            $admin_r->post('/login', [AuthController::class, 'login']);
+
+            $admin_r->prefix('', function (Router $r) {
+                $r->middleware([AdminMiddleware::class, 'handle']);
+
+                $r->get('/contact-email/list', [ContactEmailController::class, 'list']);
+                $r->post('/contact-email/add', [ContactEmailController::class, 'add']);
+                $r->delete('/contact-email/delete/{id: int}', [ContactEmailController::class, 'delete']);
+
+                $r->get('/account/get-admin-info', [GetAdminInfoController::class, 'handle']);
+                $r->post('/account/change-admin-info', [ChangeAdminInfoController::class, 'handle']);
+            });
+        });
+    })
+    ->run();
+```
+
+Typed route params like `{id: int}`, per-group middleware, and clean nesting — this is what you'd expect from a dedicated API framework, not a "frontend component library."
+
+## Frontend: phpspa components + Twig, together
+
+For pages, I write a `Component` that fetches data (usually through Eloquent) and returns a `render()` call wrapping a heredoc. Inside that heredoc, I get to use Twig's directives — `{% for %}`, `{% set %}`, `{{ }}` — alongside phpspa's own component tags like `<Component.NavigationBarComponent />`:
+
+```php
+return new Component(function () {
+    $notifications = Notifications::where('user_id', Auth::id())->get();
+
+    return render(<<<HTML
+        <div class="notificationPage">
+            <div class="container">
+                <Component.NavigationBarComponent active="notifications" />
+
+                <div class="notifCont">
+                    <div class="cards">
+                        {% for notification in notifications %}
+                            {% set userAvatar = notification.avatar %}
+                            <div class="card {{ notification.read ? 'seen' : 'unseen' }}">
+                                <div class="img"><img loading="lazy" src="{{ userAvatar }}" alt="" /></div>
+                                <div class="dits">
+                                    <div class="title">{{ notification.title }}</div>
+                                    <div class="info">{{ notification.body }}</div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="no-notifications">No notifications yet</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    HTML, compact('notifications'));
+})
+    ->route('/notifications')
+    ->title('Notifications')
+    ->middleware([UserAuthMiddleware::class, 'handle']);
+```
+
+You get Twig's templating power exactly where you want it, phpspa's own `<YourComponent />` tag syntax for importing other components, and none of the ceremony of a full MVC framework wrapped around it.
+
+## The model layer: Laravel Eloquent
+
+I don't reinvent the ORM. Eloquent is mature, well-documented, and works perfectly fine dropped into a non-Laravel project. Query building, relationships, and everything you already know from Laravel — just used as a standalone piece.
+
+## Migrations, Laravel-style, without Laravel
+
+Eloquent's migration syntax is genuinely pleasant to write. So I built [php-schema-migrator](https://github.com/dconco/php-schema-migrator) to bring that exact experience to any PHP project:
+
+```bash
+composer global require dconco/schema-migrator
+```
+
+Then, just like Laravel:
+
+```bash
+schema-migrator make:migration CreateUsersTable
+schema-migrator migrate
+```
+
+Same familiar migration file format, same commands, zero framework dependency.
+
+## Validation without the boilerplate
+
+Every endpoint needs validation, and writing rule arrays by hand gets old fast. There are two clean paths here.
+
+**Option 1: Symfony's validator**, if you're already leaning on Symfony components elsewhere.
+
+**Option 2: [phpspa-validator](https://github.com/dconco/phpspa-validator)** — a class-based validator I built specifically for this workflow:
+
+```bash
+composer require phpspa/validator
+```
+
+Define your validation as attributes right on a DTO:
+
+```php
+#[Validatable]
+final class CreateServiceDto
+{
+    #[Length(3, 50)]
+    public string $title;
+
+    #[Length(3, 500)]
+    public string $description;
+
+    #[Length(2, 30)]
+    public string $duration;
+
+    public float $price;
+
+    #[Enum(['corporate', 'personal'])]
+    public string $type;
+}
+```
+
+Then validating a request is three lines:
+
+```php
+public static function create(Request $req, Response $res)
+{
+    $result = Validator::from($req->json(), CreateServiceDto::class);
+
+    if (!$result->isValid()) {
+        return $res->validationError($result->errors());
+    }
+
+    Service::create($req->json());
+    return $res->created();
+}
+```
+
+The rules live next to the property they validate — no separate schema to keep in sync, no hunting through a rules array to figure out what a field expects.
+
+## Why this matters in 2026
+
+Every one of these libraries is small, fast, and does exactly one job. Compose phpspa for routing and components, Eloquent for models, Twig for templating logic, and lightweight attribute-based validation — and you get a stack that's as capable as any full framework, minus the bloat and minus the lock-in.
+
+This is how a lot of senior PHP developers are already building: pure PHP, thoughtfully composed libraries, no bloat. If you haven't tried this way of working, give phpspa a look — start with the docs at [phpspa.tech](https://phpspa.tech), or just scaffold a project and see how it feels.
