@@ -11,6 +11,8 @@ export type PostEntry = {
   date: string;
   topics: string[];
   author: string;
+  author_url?: string;
+  og_image?: string;
 };
 
 export type Post = {

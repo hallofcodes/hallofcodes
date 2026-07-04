@@ -30,3 +30,15 @@ h6 {
     font-family: var(--font-heading);
     letter-spacing: -0.05em;
 }
+
+/* override default code block styles with `code` elements */
+.prose
+    :where(code):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+    ):before,
+.prose
+    :where(code):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+    ):after {
+    content: "";
+}
