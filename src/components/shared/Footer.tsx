@@ -205,6 +205,11 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
                 </Link>
               </li>
               <li>
+                <Link href="/publish-to-chrome-web-store" className="hover:underline">
+                  Publish to Chrome Web Store
+                </Link>
+              </li>
+              <li>
                 <Link href="/community-guidelines" className="hover:underline">
                   Community Guidelines
                 </Link>
