@@ -59,69 +59,60 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
       />
-      <section
-        className="relative min-h-screen bg-black text-white overflow-hidden"
-        aria-label="Hero"
-      >
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          data-aos="fade-in"
-          data-aos-duration="2000"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
+      <main className="overflow-hidden bg-[#090d16] text-white">
+        <section className="relative min-h-screen overflow-hidden border-y border-white/10">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            data-aos="fade-in"
+            data-aos-duration="2000"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
 
-        <section className="relative min-h-screen overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
-          <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />
+          <div className="absolute inset-0 bg-[#090d16]/70" />
 
-          <div className="relative mx-auto flex min-h-screen flex-col items-start justify-center gap-8 px-6 py-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-blue-300">
-              Merging Programmers Beyond Conflicts
+          <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-20 md:py-28">
+            <div className="max-w-4xl">
+              <h1 className="mt-8 text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+                Hall of Codes
+                <span className="block text-blue-400">Build together.</span>
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-base leading-7 text-gray-300 md:text-lg md:leading-8">
+                We are an open-source community built on collaboration,
+                learning, and shared progress. We bring developers together to
+                build meaningful projects, support one another, and keep the
+                spirit of open source alive.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/members"
+                  className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+                >
+                  Members
+                </Link>
+
+                <Link
+                  href="/projects"
+                  className="rounded-xl border border-gray-700 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-gray-500 hover:text-white"
+                >
+                  Projects
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-              Hall of Codes.
-              <span className="block text-blue-400">
-                The community that never dies.
-              </span>
-            </h1>
-            <p className="max-w-2xl text-base text-gray-300 md:text-lg">
-              We revolutionize development by fostering cohesion among teams,
-              transcending conflicts to drive collective innovation. Harnessing
-              the synergy of diverse talents, we pave the way for seamless
-              collaboration, ensuring projects thrive in an environment of unity
-              and progress.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/members"
-                className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
-              >
-                Members
-              </Link>
-              <Link
-                href="/projects"
-                className="rounded-xl border border-gray-700 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-gray-500 hover:text-white"
-              >
-                Projects
-              </Link>
+            <div className="mt-16 w-full">
+              <MemberGlobe members={members} />
             </div>
           </div>
         </section>
 
-        <MemberGlobe members={members} />
-      </section>
-
-      <main className="overflow-hidden bg-[#090d16] text-white">
         <section
           className="border-t border-white/10"
           style={{
