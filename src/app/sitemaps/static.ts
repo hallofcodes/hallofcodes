@@ -8,7 +8,6 @@ const routes = [
   "/blog",
   "/community",
   "/community-guidelines",
-  "/subdomain-program",
   "/members",
   "/portfolio",
   "/projects",

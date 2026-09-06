@@ -159,7 +159,7 @@ export default function MemberGlobe({ members }: MemberGlobeProps) {
   }, [visibleMembers]);
 
   return (
-    <div className="absolute right-8 top-1/2 hidden w-[min(42vw,560px)] -translate-y-1/2 lg:block xl:right-16 2xl:right-28">
+    <div className="absolute right-8 top-1/2 hidden w-[min(42vw,560px)] -translate-y-1/2 lg:block">
       <div
         ref={containerRef}
         className="relative aspect-square w-full"

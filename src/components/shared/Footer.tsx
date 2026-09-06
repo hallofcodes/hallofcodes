@@ -200,16 +200,6 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             <h4 className="text-sm font-semibold text-white mb-3">Community</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <Link href="/subdomain-program" className="hover:underline">
-                  Subdomain Program
-                </Link>
-              </li>
-              <li>
-                <Link href="/publish-to-chrome-web-store" className="hover:underline">
-                  Publish to Chrome Web Store
-                </Link>
-              </li>
-              <li>
                 <Link href="/community-guidelines" className="hover:underline">
                   Community Guidelines
                 </Link>
