@@ -1,39 +1,33 @@
-const quotes = [
-  "The page you seek has been eaten by a bug.",
-  "404: Page not found. But at least the coffee machine still works.",
-  "Looks like this page rage-quit.",
-  "This page is on vacation. Try again later.",
-  "Oops. Even the best developers ship 404s.",
-  "The link you followed is more lost than my semicolons.",
-  "This page escaped into production.",
-  "404: The developer responsible has been notified (probably).",
-  "This page doesn't exist... yet.",
-  "Looks like you found a secret level. Unfortunately it's empty.",
-  "Error 404: Brain not found.",
-  "The page is missing, but the portfolio is still awesome.",
-  "This URL took a wrong turn at the router.",
-  "Even Google can't find this one.",
-  "The page you’re looking for has been refactored into oblivion.",
-];
+import Link from "next/link";
+
+export const dynamic = "force-static";
 
 export default function NotFound() {
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
-
   return (
-    <div className="flex min-h-screen items-center justify-center px-6">
-      <div className="w-full max-w-xl text-center">
-        <h1 className="text-8xl font-bold tracking-tight">
-          <span className="text-indigo-500">4</span>
-          <span className="text-gray-500">0</span>
-          <span className="text-indigo-500">4</span>
-        </h1>
+    <main className="bg-gray-950 text-white">
+      <section className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_20%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(59,130,246,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]" />
 
-        <h2 className="mt-6 text-2xl font-semibold">“{quote}”</h2>
+        <div className="relative mx-auto flex min-h-screen max-w-screen-xl flex-col items-start justify-center gap-8 px-6 py-16">
+          <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+            Page Not Found
+            <span className="block text-blue-400">404 Error</span>
+          </h1>
 
-        <p className="my-3 leading-relaxed">
-          The page you’re looking for doesn’t exist or may have been moved.
-        </p>
-      </div>
-    </div>
+          <p className="max-w-2xl text-base text-gray-300 md:text-lg">
+            The page you&apos;re looking for doesn&apos;t exist or may have been
+            moved somewhere else.
+          </p>
+
+          <Link
+            href="/"
+            className="rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+          >
+            Back to Home
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
