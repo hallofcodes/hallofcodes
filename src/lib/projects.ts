@@ -49,4 +49,14 @@ export const projects: Project[] = [
     html_url: "https://github.com/hallofcodes/wisp",
     coverImage: "/images/wisp.png",
   },
+  {
+    slug: "vhdpeek",
+    name: "VHDPeek",
+    description:
+      "Browse VHD/VHDX disk images over HTTP or locally - no download, no mount.",
+    tags: ["vhd", "filesystem", "python"],
+    homepage: "https://github.com/hallofcodes/vhdpeek",
+    html_url: "https://github.com/hallofcodes/vhdpeek",
+    coverImage: "/images/vhdpeek.png",
+  },
 ];
