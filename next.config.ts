@@ -20,6 +20,7 @@ const ContentSecurityPolicy = `
     blob:
     https://excelinweb.com
     https://start.excelinweb.com
+    https://aiskillhub.dev
     https://avatars.githubusercontent.com
     https://opengraph.githubassets.com
     https://github.com;

@@ -64,12 +64,33 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
 
   const socials = [
     { href: "https://github.com/hallofcodes", label: "GitHub", icon: faGithub },
-    { href: "https://facebook.com/hallofcodes", label: "Facebook", icon: faFacebook },
-    { href: "https://youtube.com/@hallofcodes", label: "YouTube", icon: faYoutube },
+    {
+      href: "https://facebook.com/hallofcodes",
+      label: "Facebook",
+      icon: faFacebook,
+    },
+    {
+      href: "https://youtube.com/@hallofcodes",
+      label: "YouTube",
+      icon: faYoutube,
+    },
     {
       href: "https://linkedin.com/company/hallofcodes",
       label: "LinkedIn",
       icon: faLinkedin,
+    },
+  ];
+
+  const sponsors = [
+    {
+      name: "ExcelinWeb",
+      href: "https://excelinweb.com/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship",
+      logo: "https://excelinweb.com/assets/images/logo/excelinweb-logo-white-transparent.png",
+    },
+    {
+      name: "AISkillHub.dev",
+      href: "https://aiskillhub.dev/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship",
+      logo: "https://aiskillhub.dev/android-chrome-192x192.png",
     },
   ];
 
@@ -199,7 +220,10 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
             </div>
 
             <div>
-              <label htmlFor="footer-language" className={columnHeading + " block"}>
+              <label
+                htmlFor="footer-language"
+                className={columnHeading + " block"}
+              >
                 Language / Region
               </label>
               <div className="relative">
@@ -228,10 +252,60 @@ export default function Footer({ posts }: { posts: PostEntry[] }) {
           </div>
         </div>
 
+        <section
+          aria-labelledby="footer-sponsors"
+          className="border-t border-white/10 px-6 py-6 sm:px-8"
+        >
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <h2
+              id="footer-sponsors"
+              className="text-sm font-semibold text-white"
+            >
+              Sponsors & Partners
+            </h2>
+            <span className="text-xs text-gray-500">
+              Thank you for your support
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            {sponsors.map((sponsor) => (
+              <a
+                key={sponsor.name}
+                href={sponsor.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={sponsor.name}
+                className="group inline-flex items-center gap-3 border border-white/10 px-4 py-3 transition hover:border-cyan-300/40 hover:bg-white/[0.03]"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={sponsor.logo}
+                  alt=""
+                  loading="lazy"
+                  className="size-7 object-contain opacity-70 grayscale transition group-hover:opacity-100 group-hover:grayscale-0"
+                />
+
+                <span className="text-sm font-medium text-gray-300 transition group-hover:text-white">
+                  {sponsor.name}
+                </span>
+
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="text-[10px] text-gray-600 transition group-hover:translate-x-0.5 group-hover:text-cyan-300"
+                />
+              </a>
+            ))}
+          </div>
+        </section>
+
         <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-4 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
           <span>
             &copy; {yearText}{" "}
-            <Link href="/" className="text-gray-300 transition hover:text-white">
+            <Link
+              href="/"
+              className="text-gray-300 transition hover:text-white"
+            >
               Hall of Codes
             </Link>
             . All rights reserved.

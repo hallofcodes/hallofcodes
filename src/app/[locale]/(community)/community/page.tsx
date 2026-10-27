@@ -328,17 +328,20 @@ export default function Community() {
 
           <div className="mt-12 grid gap-px border border-white/10 bg-white/10 lg:grid-cols-[1.3fr_0.7fr]">
             <Link
-              href="https://start.excelinweb.com/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship"
+              href="https://excelinweb.com/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship"
               target="_blank"
               className="group bg-[#090d16] p-8 transition hover:bg-white/[0.03]"
             >
               <div className="flex items-center justify-between gap-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://excelinweb.com/assets/images/logo/excelinweb-logo-white-transparent.png"
-                  alt="ExcelinWeb"
-                  className="h-10 w-auto opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                />
+                <div className="flex items-center text-2xl font-semibold text-white gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://excelinweb.com/assets/images/logo/excelinweb-logo-white-transparent.png"
+                    alt="ExcelinWeb"
+                    className="h-10 w-auto opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  />
+                  <h3>ExcelinWeb</h3>
+                </div>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   className="text-sm text-gray-600 transition group-hover:translate-x-1 group-hover:text-white"
@@ -350,6 +353,42 @@ export default function Community() {
                   "Financial assistance for domain registration and related infrastructure costs.",
                   "Increased operational stability for the organization's online presence.",
                   "Opportunity to build long-term relationships with industry supporters and collaborators.",
+                ].map((item, index) => (
+                  <li key={item} className="border-t border-white/10 pt-4">
+                    <span className="mb-2 block font-mono text-xs text-cyan-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Link>
+
+            <Link
+              href="https://aiskillhub.dev/?utm_source=hallofcodes&utm_medium=referral&utm_campaign=sponsorship"
+              target="_blank"
+              className="group bg-[#090d16] p-8 transition hover:bg-white/[0.03]"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center text-2xl font-semibold text-white gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://aiskillhub.dev/android-chrome-192x192.png"
+                    alt="AISkillHub.dev"
+                    className="h-10 w-auto opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  />
+                  <h3>AISkillHub.dev</h3>
+                </div>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="text-sm text-gray-600 transition group-hover:translate-x-1 group-hover:text-white"
+                />
+              </div>
+
+              <ul className="mt-8 grid gap-6 text-sm leading-6 text-gray-400 md:grid-cols-2">
+                {[
+                  "Collaboration on AI education, practical learning resources, and skill development.",
+                  "Shared opportunities to help developers learn, experiment, and build with AI.",
                 ].map((item, index) => (
                   <li key={item} className="border-t border-white/10 pt-4">
                     <span className="mb-2 block font-mono text-xs text-cyan-300">
