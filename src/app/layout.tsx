@@ -2,15 +2,8 @@ import type { Metadata } from "next";
 import { Source_Code_Pro, Maven_Pro } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "./globals.css";
-import Nav from "../components/shared/Nav";
-import Footer from "../components/shared/Footer";
-import Head from "next/head";
-import NextTopLoader from "nextjs-toploader";
-import ScrollTop from "@/components/ui/ScrollTop";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import AOSWrapper from "@/components/shared/AOSWrapper";
-import { getRecentPosts } from "@/lib/posts";
-import { getMessages } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
 
 config.autoAddCss = false;
 
