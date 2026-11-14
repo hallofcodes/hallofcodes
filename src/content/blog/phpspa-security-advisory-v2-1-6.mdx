@@ -1,0 +1,109 @@
+---
+title: "Understanding the PhpSPA Security Advisory (v2.1.6): What Happened, What Was Fixed, and What It Means"
+date: "2026-11-14"
+excerpt: "A deep dive into the recent security hardening in PhpSPA v2.1.6, clarifying which versions were actually impacted, why stable releases were not affected by the unauthenticated RCE, and how we resolved it."
+topics: ["Security", "PhpSPA", "Open Source", "Release"]
+author: "Dave Conco"
+author_url: "https://github.com/dconco"
+og_image: "https://dconco.net/phpspa-icon.jpg"
+---
+
+Security, reliability, and transparency are fundamental to open-source software. Recently, we published a critical security advisory for **PhpSPA** alongside the release of **`v2.1.6`**. 
+
+Because security scanners and automated CVE reports often condense complex version histories into broad ranges like `< 2.1.6`, there has been understandable curiosity about what happened, which versions were actually vulnerable, and whether older stable releases dating back to 2023 were at risk.
+
+In this post, we want to lay out the complete timeline, break down each resolved issue, explain why **stable versions (`v2.0.14` and earlier) were not vulnerable to the unauthenticated remote code execution (RCE)**, and detail the defense-in-depth hardening released in `v2.1.6`.
+
+---
+
+## The Big Question: Were Older Versions Vulnerable to Unauthenticated RCE?
+
+**The short answer is no.**
+
+The core unauthenticated entry point highlighted in the security advisory (`handlePhpSPARequest()` / client `__call` token handler) was reported because it decoded client tokens using PHP's native `unserialize()`. 
+
+However, looking back through git history:
+- **All stable releases from `v1.0.0` through `v2.0.14` used `json_decode()`** on this endpoint. `json_decode()` cannot instantiate arbitrary PHP classes or trigger object injection gadgets.
+- The change from `json_decode()` to `@unserialize()` was made on **October 23, 2026** (commit `b14e78b`) during active development on the `master` and `support/php-8.4` branches.
+- That commit was **never tagged or published in any official release prior to `v2.1.6`**.
+
+The security researcher confirmed the vulnerability on the `dev-support/php-8.4` development branch and reasonably assumed older releases might share the same implementation. In reality, that unauthenticated HTTP entry point only affected development checkouts tracking `master` between October 23, 2026, and November 13, 2026.
+
+That said, our audit of the framework revealed other legacy areas (such as session handling and internal component parsers) that benefited from immediate deserialization hardening. Rather than only patching the development branch, we decided to overhaul and defuse all potential deserialization paths across the entire framework in **`v2.1.6`**.
+
+---
+
+## Detailed Vulnerability & Version Breakdown
+
+Below is the complete breakdown of every flaw addressed, the exact commit where it was introduced, the versions it affected, and its status in `v2.1.6`:
+
+| Vulnerability / Flaw | Introduced In | Affected Versions | Status in v2.1.6 |
+|---|---|---|---|
+| **Unauthenticated Object Injection via `phpspa.__call` RPC** | Commit `b14e78b` (Oct 23, 2026) | **Development branch only** (`v2.0.14` and earlier are **NOT** affected) | ✅ **Patched**: Switched to HMAC-signed `FunctionCallToken` JSON payloads. Serialized tokens are rejected. |
+| **Direct PHP Execution in `Response::sendFile()`** | Commit `b4e881b` (Dec 2025) | `v2.0.4` through `v2.0.14` | ✅ **Patched**: Strictly refuses `.php` files and throws `InvalidArgumentException`. |
+| **Session Deserialization (`SessionHandler::get`)** | Commit `36fef02` (Aug 2025) | `v1.1.6` through `v2.0.14` | ✅ **Patched**: Enforced `allowed_classes => false` on all session deserialization. |
+| **SSRF POP Gadget in `PendingRequest::__toString`** | Commit `1e49f29` (Oct 2025) | `v2.0.0` through `v2.0.14` | ✅ **Defused**: Removed network I/O from `__toString()`. Auto-fetching is permanently removed. |
+| **Callback Gadget in `ImportedFile::getRawContent`** | Core Import system (Oct 2025) | `v2.0.0` through `v2.0.14` | ✅ **Neutralized**: Method refuses arguments, preventing abuse as a cURL read callback. |
+| **Component Tag Unauthenticated Object Attributes** | Dynamic parser (Sep 2025) | `v1.1.7` through `v2.0.14` | ✅ **Hardened**: Component attributes now require per-session HMAC signatures via `ComponentValueCodec`. |
+
+---
+
+## Deep Dive: What Was Fixed
+
+### 1. Hardening RPC Function Calls (`phpspa.__call`)
+PhpSPA allows client-side components to invoke designated PHP functions via an RPC mechanism. In `v2.1.6`, we introduced `FunctionCallToken`:
+- Function tokens are now structured JSON payloads signed with a cryptographic HMAC.
+- The server validates the signature and expiry **before** parsing any data.
+- Native PHP `unserialize()` is completely banished from the RPC pipeline.
+
+### 2. Defusing Internal Framework Gadgets
+Even if an application running third-party code suffers from an object injection elsewhere, framework classes should never serve as "gadgets" that attackers can leverage:
+- **`PendingRequest`**: Previously, coercing a `PendingRequest` to a string (`echo $request`) triggered an automatic HTTP request. This made it a potential Server-Side Request Forgery (SSRF) gadget. We removed all network I/O from `__toString()`. Fetching now requires an explicit call to `->get()`.
+- **`ImportedFile`**: `getRawContent()` was hardened so that it cannot be passed into cURL options (like `CURLOPT_READFUNCTION`) to stream arbitrary content to unauthorized destinations.
+
+### 3. File Serving Security (`Response::sendFile()`)
+In earlier versions, `Response::sendFile()` used `require` internally if given a PHP file. While intended for template rendering, this could allow arbitrary code execution if an application fed unvalidated file paths to `sendFile()`. In `v2.1.6`, `sendFile()` explicitly rejects any file ending in `.php` or executable extensions.
+
+### 4. Restricting Session Deserialization
+While session data is typically stored server-side, multi-server environments or database-backed sessions can sometimes be tampered with. In `SessionHandler::get()`, we set `['allowed_classes' => false]`, ensuring that session data can only deserialize primitive data types (arrays, strings, numbers), never arbitrary PHP objects.
+
+---
+
+## How to Upgrade
+
+Upgrading to `v2.1.6` is straightforward via Composer:
+
+```bash
+composer require dconco/phpspa:^2.1.6
+```
+
+Or update your `composer.json`:
+
+```json
+{
+    "require": {
+        "dconco/phpspa": "^2.1.6"
+    }
+}
+```
+
+and run:
+
+```bash
+composer update dconco/phpspa
+```
+
+### Breaking Changes to Note
+1. **Explicit Fetching**: If your code was relying on `(string)$pendingRequest` or `echo useFetch(...)` to make HTTP requests, you must now call `->get()` explicitly: `echo useFetch(...)->get()`.
+2. **Refreshed Client Tokens**: Because RPC tokens are now HMAC-signed JSON, open browser tabs should be refreshed after updating the server runtime.
+3. **HTTP POST for RPC**: Control channel requests and server function calls now strictly require HTTP `POST`.
+
+---
+
+## Moving Forward
+
+Security is an ongoing commitment. We want to thank the security community for responsible disclosure and collaborative feedback. 
+
+With `v2.1.6`, PhpSPA is not only significantly more resilient against object injection and file execution attacks, but also brings major performance improvements—including **FrankenPHP worker mode support**, **WhatsApp/social crawler meta-tag compression fixes**, and our new **Rust-backed Oxc minifier engine**.
+
+If you have any questions or discover any potential security issues, please report them privately through [GitHub Security Advisories](https://github.com/dconco/phpspa/security/advisories).
